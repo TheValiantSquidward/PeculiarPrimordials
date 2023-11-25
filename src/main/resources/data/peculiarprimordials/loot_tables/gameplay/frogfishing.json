@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "weight": 25,
+          "quality": -2,
+          "name": "rustsfrogfish:gameplay/frogfishingtables/frogtrash"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "weight": 25,
+          "quality": 2,
+          "name": "rustsfrogfish:gameplay/frogfishingtables/frogtreasure"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "weight": 50,
+          "quality": -1,
+          "name": "rustsfrogfish:gameplay/frogfishingtables/frogfishfish"
+        }
+      ]
+    }
+  ]
+}

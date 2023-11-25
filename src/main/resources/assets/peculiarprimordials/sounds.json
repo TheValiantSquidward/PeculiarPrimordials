@@ -1,0 +1,10 @@
+{
+  "frogsong": {
+    "sounds":[
+      {
+        "name": "peculiarprimordials:frogsong",
+        "stream": true
+      }
+    ]
+  }
+}

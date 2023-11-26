@@ -6,11 +6,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -19,15 +16,10 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.*;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
 import net.thevaliantsquidward.peculiarprimordials.entity.ai.BottomWalkGoal;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -35,44 +27,7 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
-import com.peeko32213.unusualprehistory.common.entity.EntityDunkleosteus;
-import com.peeko32213.unusualprehistory.common.entity.EntityTyrannosaurusRex;
-import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityBaseDinosaurAnimal;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
-
-import static javax.swing.UIManager.get;
 
 public class NeilpeartiaEntity extends WaterAnimal implements GeoEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
@@ -154,33 +109,33 @@ public class NeilpeartiaEntity extends WaterAnimal implements GeoEntity {
 private NeilpeartiaEntity frogfish;
 
     @Override
-    public void tick() {
-        super.tick();
+  // public void tick() {
+  //     super.tick();
 
-        if (level.isClientSide()) {
-            return;
-        }
+  //     if (level.isClientSide()) {
+  //         return;
+  //     }
 
-        if (isInWater()) {
-            long currentTime = level.getGameTime();
-            long timeSinceLastSpawn = currentTime - lastSpawnTime;
+  //     if (isInWater()) {
+  //         long currentTime = level.getGameTime();
+  //         long timeSinceLastSpawn = currentTime - lastSpawnTime;
 
-            if (timeSinceLastSpawn >= spawnInterval) {
-                spawnRandomItems();
-                lastSpawnTime = currentTime;
-            }
-        }
-    }
-    private void spawnRandomItems() {
-        RandomSource randomsource = this.getRandom();
-    LootContext.Builder lootcontext$builder = (new LootContext.Builder((ServerLevel)this.level)).withParameter(LootContextParams.ORIGIN, this.position()).withParameter(LootContextParams.THIS_ENTITY, this).withRandom(randomsource);
-    LootTable loottable = this.level.getServer().getLootTables().get(LOOT_TABLE);
-        for (ItemStack itemstack : loottable.getRandomItems(lootcontext$builder.create(LootContextParamSets.GIFT))) {
-        this.level.addFreshEntity(new ItemEntity(this.level, this.getX(), this.getY(), this.getZ(), itemstack));
-    }
-        this.playSound(SoundEvents.FISHING_BOBBER_SPLASH);
-
-}
+  //         if (timeSinceLastSpawn >= spawnInterval) {
+  //             spawnRandomItems();
+  //             lastSpawnTime = currentTime;
+  //         }
+  //     }
+  // }
+//    private void spawnRandomItems() {
+//        RandomSource randomsource = this.getRandom();
+//    LootContext.Builder lootcontext$builder = (new LootContext.Builder((ServerLevel)this.level)).withParameter(LootContextParams.ORIGIN, this.position()).withParameter(LootContextParams.THIS_ENTITY, this).withRandom(randomsource);
+//    LootTable loottable = this.level.getServer().getLootTables().get(LOOT_TABLE);
+//        for (ItemStack itemstack : loottable.getRandomItems(lootcontext$builder.create(LootContextParamSets.GIFT))) {
+//        this.level.addFreshEntity(new ItemEntity(this.level, this.getX(), this.getY(), this.getZ(), itemstack));
+//    }
+//        this.playSound(SoundEvents.FISHING_BOBBER_SPLASH);
+//
+//  }
 
     //sound code
 

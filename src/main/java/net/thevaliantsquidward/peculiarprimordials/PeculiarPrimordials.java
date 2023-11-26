@@ -13,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
+import net.thevaliantsquidward.peculiarprimordials.entity.client.BlochiusRenderer;
 import net.thevaliantsquidward.peculiarprimordials.entity.client.NeilpeartiaRenderer;
 import net.thevaliantsquidward.peculiarprimordials.item.ModCreativeModeTabs;
 import net.thevaliantsquidward.peculiarprimordials.item.ModItems;
@@ -67,6 +68,8 @@ public class PeculiarPrimordials
         {
             EntityRenderers.register
                     (ModEntities.NEILPEARTIA.get(), NeilpeartiaRenderer:: new);
+            EntityRenderers.register
+                    (ModEntities.BLOCHIUS.get(), BlochiusRenderer:: new);
         }
     }
 }

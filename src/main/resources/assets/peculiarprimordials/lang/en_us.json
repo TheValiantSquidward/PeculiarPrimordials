@@ -2,12 +2,16 @@
   "creativetab.peculiar_primordials_tab" : "Peculiar Primordials",
 
   "item.peculiarprimordials.neilpeartia_spawn_egg" : "Neilpeartia Spawn Egg",
+  "item.peculiarprimordials.blochius_spawn_egg" : "Blochius Spawn Egg",
 
   "item.peculiarprimordials.raw_neilpeartia" : "Raw Neilpeartia",
+  "item.peculiarprimordials.raw_blochius" : "Raw Blochius",
 
+  "item.peculiarprimordials.blochius_bucket" : "Bucket Of Blochius",
   "item.peculiarprimordials.shed_lure" : "Shed Lure",
 
-  "item.peculiarprimordials.neilpeartia_vial" : "Neilpeartia DNA Flask",
+  "item.peculiarprimordials.neilpeartia_flask" : "Neilpeartia DNA Flask",
+  "item.peculiarprimordials.blochius_flask" : "Blochius DNA Flask",
 
   "item.peculiarprimordials.fish_leather" : "Fish Leather",
 
@@ -16,8 +20,11 @@
 
 
   "entity.peculiarprimordials.neilpeartia" : "Neilpeartia",
+  "entity.peculiarprimordials.blochius" : "Blochius",
 
   "peculiarprimordials.advancement.interact_neilpeartia" : "Rush Drummer",
+  "peculiarprimordials.advancement.interact_neilpeartia.desc" : "Revive a Neilpeartia",
 
-  "peculiarprimordials.advancement.interact_neilpeartia.desc" : "Revive a Neilpeartia"
+  "peculiarprimordials.advancement.interact_blochius" : "Needle (Fish) in a Haystack",
+  "peculiarprimordials.advancement.interact_blochius.desc" : "Revive a Blochius"
 }

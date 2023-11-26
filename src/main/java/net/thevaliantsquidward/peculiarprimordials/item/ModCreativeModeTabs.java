@@ -22,13 +22,18 @@ public class ModCreativeModeTabs {
                         //order:
 
                         pOutput.accept(ModItems.RAW_NEILPEARTIA.get());
+                        pOutput.accept(ModItems.RAW_BLOCHIUS.get());
 
                         pOutput.accept(ModItems.NEILPEARTIA_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.BLOCHIUS_SPAWN_EGG.get());
 
                         pOutput.accept(ModItems.SHED_LURE.get());
                         pOutput.accept(ModItems.FISH_LEATHER.get());
 
                         pOutput.accept(ModItems.NEILPEARTIA_FLASK.get());
+                        pOutput.accept(ModItems.BLOCHIUS_FLASK.get());
+
+                        pOutput.accept(ModItems.BLOCHIUS_BUCKET.get());
 
                         pOutput.accept(ModItems.LURE_DISC.get());
 

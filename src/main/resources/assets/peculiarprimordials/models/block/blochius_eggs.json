@@ -2,5 +2,6 @@
   "parent": "unusualprehistory:block/template_eggs/template_flat_water_egg",
   "textures": {
     "texture": "peculiarprimordials:block/blochius_egg"
-  }
+  },
+  "render_type": "cutout"
 }

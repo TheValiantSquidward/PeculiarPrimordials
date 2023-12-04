@@ -13,6 +13,8 @@
 
   "item.peculiarprimordials.blochius_bucket" : "Bucket Of Blochius",
   "item.peculiarprimordials.shed_lure" : "Shed Lure",
+  "item.peculiarprimordials.golden_egg" : "Golden Giganhinga Egg",
+  "item.peculiarprimordials.infertile_egg" : "Infertile Giganhinga Egg",
 
   "item.peculiarprimordials.neilpeartia_flask" : "Neilpeartia DNA Flask",
   "item.peculiarprimordials.blochius_flask" : "Blochius DNA Flask",
@@ -24,6 +26,7 @@
   "item.peculiarprimordials.lure_disc" : "Music Disc",
   "item.peculiarprimordials.lure_disc.desc" : "TheValiantSquidward - Lure",
 
+  "block.peculiarprimordials.neilpeartia_eggs" : "Neilpeartia Eggs",
 
   "entity.peculiarprimordials.neilpeartia" : "Neilpeartia",
   "entity.peculiarprimordials.blochius" : "Blochius",

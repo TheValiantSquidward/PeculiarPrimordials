@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "peculiarprimordials:item/infertile_anhinga_egg"
+  }
+}

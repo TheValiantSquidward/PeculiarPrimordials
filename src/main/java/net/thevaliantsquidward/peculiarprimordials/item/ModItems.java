@@ -4,9 +4,7 @@ import com.peeko32213.unusualprehistory.common.item.ItemModFishBucket;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.RecordItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,8 +20,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, PeculiarPrimordials.MOD_ID);
 
-    public static final RegistryObject<Item> NEILPEARTIA_SPAWN_EGG = ITEMS.register("neilpeartia_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntities.NEILPEARTIA, 0x876e36, 0x4e442c, new Item.Properties()));
+    public static final RegistryObject<Item> NEILPEARTIA_SPAWN_EGG = ITEMS.register("neilpeartia_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.NEILPEARTIA, 0x876e36, 0x4e442c, new Item.Properties()));
 
     public static final RegistryObject<Item> BLOCHIUS_SPAWN_EGG = ITEMS.register("blochius_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.BLOCHIUS, 0x94b8de, 0xe0e0e0, new Item.Properties()));
@@ -59,6 +56,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> LURE_DISC = ITEMS.register("lure_disc",
             () -> new RecordItem(2, ModSounds.LURE, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC), 2600));
+
+    public static final RegistryObject<Item> GOLDEN_EGG = ITEMS.register("golden_egg", () -> new ExperienceBottleItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> INFERTILE_EGG = ITEMS.register("infertile_egg", () -> new SnowballItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

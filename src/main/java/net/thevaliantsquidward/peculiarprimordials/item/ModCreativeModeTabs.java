@@ -9,6 +9,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
+import net.thevaliantsquidward.peculiarprimordials.block.ModBlocks;
 
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
@@ -39,9 +40,14 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.GIGANHINGA_FLASK.get());
                         pOutput.accept(ModItems.TAPEJARA_FLASK.get());
 
-                        pOutput.accept(ModItems.BLOCHIUS_BUCKET.get());
+                        pOutput.accept(ModBlocks.BLOCHIUS_EGGS.get());
+                        pOutput.accept(ModBlocks.NEILPEARTIA_EGGS.get());
 
+                        pOutput.accept(ModItems.BLOCHIUS_BUCKET.get());
                         pOutput.accept(ModItems.LURE_DISC.get());
+                        pOutput.accept(ModItems.GOLDEN_EGG.get());
+                        pOutput.accept(ModItems.GOLDEN_EGG.get());
+
 
                     })
                     .build());

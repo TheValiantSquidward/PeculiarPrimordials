@@ -15,6 +15,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -39,10 +40,9 @@ public class GiganhingaEntity extends EntityBaseDinosaurAnimal implements GeoEnt
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return null;
+    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob p_146744_) {
+        return ModEntities.GIGANHINGA.get().create(serverLevel);
     }
-
 
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoker",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "group": "roast_giganhinga",
+  "ingredient": {
+    "item": "peculiarprimordials:raw_giganhinga"
+  },
+  "result": "peculiarprimordials:roast_giganhinga"
+}

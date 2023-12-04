@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.thevaliantsquidward.peculiarprimordials.block.ModBlocks;
 import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
 import net.thevaliantsquidward.peculiarprimordials.entity.client.BlochiusRenderer;
 import net.thevaliantsquidward.peculiarprimordials.entity.client.GiganhingaRenderer;
@@ -40,6 +41,8 @@ public class PeculiarPrimordials
         ModSounds.register(modEventBus);
 
         ModItems.register(modEventBus);
+
+        ModBlocks.BLOCKS.register(modEventBus);
 
         ModCreativeModeTabs.register(modEventBus);
 

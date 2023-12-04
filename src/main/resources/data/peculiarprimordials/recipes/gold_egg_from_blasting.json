@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 10.0,
+  "group": "golden_egg",
+  "ingredient": {
+    "item": "peculiarprimordials:golden_egg"
+  },
+  "result": "minecraft:gold_ingot"
+}

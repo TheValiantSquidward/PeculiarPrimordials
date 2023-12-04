@@ -1,13 +1,16 @@
 package net.thevaliantsquidward.peculiarprimordials.entity.custom;
 
+import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityBaseDinosaurAnimal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -21,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
+import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
 import net.thevaliantsquidward.peculiarprimordials.entity.ai.BottomWalkGoal;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -29,11 +33,11 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import org.jetbrains.annotations.Nullable;
 
-public class NeilpeartiaEntity extends WaterAnimal implements GeoEntity {
+public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private Level level;
 
-    public NeilpeartiaEntity(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
+    public NeilpeartiaEntity(EntityType<? extends EntityBaseDinosaurAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -48,6 +52,57 @@ public class NeilpeartiaEntity extends WaterAnimal implements GeoEntity {
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
  }
+
+    @Override
+    protected SoundEvent getAttackSound() {
+        return null;
+    }
+
+    @Override
+    protected int getKillHealAmount() {
+        return 0;
+    }
+
+    @Override
+    protected boolean canGetHungry() {
+        return false;
+    }
+
+    @Override
+    protected boolean hasTargets() {
+        return false;
+    }
+
+    @Override
+    protected boolean hasAvoidEntity() {
+        return false;
+    }
+
+    @Override
+    protected boolean hasCustomNavigation() {
+        return false;
+    }
+
+    @Override
+    protected boolean hasMakeStuckInBlock() {
+        return false;
+    }
+
+    @Override
+    protected boolean customMakeStuckInBlockCheck(BlockState blockState) {
+        return false;
+    }
+
+    @Override
+    protected TagKey<EntityType<?>> getTargetTag() {
+        return null;
+    }
+
+    @Override
+    public boolean canBreatheUnderwater() {
+        return true;
+    }
+
     public static AttributeSupplier setAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.2f)
@@ -92,6 +147,12 @@ public class NeilpeartiaEntity extends WaterAnimal implements GeoEntity {
             this.setVariant(0);
         }
         return super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob pOtherParent) {
+        return ModEntities.NEILPEARTIA.get().create(serverLevel);
     }
 
     public static String getVariantName(int variant) {

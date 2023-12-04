@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.BlochiusEntity;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.NeilpeartiaEntity;
+import net.thevaliantsquidward.peculiarprimordials.entity.custom.TapejaraEntity;
 
 public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
@@ -28,6 +29,12 @@ public class ModEntities {
                     () -> EntityType.Builder.of(BlochiusEntity::new, MobCategory.WATER_AMBIENT)
                             .sized(1.1f, 0.6f)
                             .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "blochius").toString()));
+
+    public static final RegistryObject<EntityType<TapejaraEntity>> TAPEJARA =
+            ENTITY_TYPES.register("tapejara",
+                    () -> EntityType.Builder.of(TapejaraEntity::new, MobCategory.CREATURE)
+                            .sized(2.0F, 1.60F)
+                            .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "tapejara").toString()));
 
 
 

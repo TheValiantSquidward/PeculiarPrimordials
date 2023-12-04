@@ -21,9 +21,13 @@
 
   "entity.peculiarprimordials.neilpeartia" : "Neilpeartia",
   "entity.peculiarprimordials.blochius" : "Blochius",
+  "entity.peculiarprimordials.tapejara" : "Tapejara",
 
   "peculiarprimordials.advancement.interact_neilpeartia" : "Rush Drummer",
   "peculiarprimordials.advancement.interact_neilpeartia.desc" : "Revive a Neilpeartia",
+
+  "peculiarprimordials.advancement.interact_tapejara" : "Lord of the Ways",
+  "peculiarprimordials.advancement.interact_tapejara.desc" : "Revive a Tapejara",
 
   "peculiarprimordials.advancement.interact_blochius" : "Needle (Fish) in a Haystack",
   "peculiarprimordials.advancement.interact_blochius.desc" : "Revive a Blochius"

@@ -108,7 +108,7 @@ public class NeilpeartiaEntity extends WaterAnimal implements GeoEntity {
     private final long spawnInterval = 4800;
 private NeilpeartiaEntity frogfish;
 
-    @Override
+   // @Override
   // public void tick() {
   //     super.tick();
 

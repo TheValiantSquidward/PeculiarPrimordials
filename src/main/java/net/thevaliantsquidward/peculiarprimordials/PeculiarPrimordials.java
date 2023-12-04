@@ -15,6 +15,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
 import net.thevaliantsquidward.peculiarprimordials.entity.client.BlochiusRenderer;
 import net.thevaliantsquidward.peculiarprimordials.entity.client.NeilpeartiaRenderer;
+import net.thevaliantsquidward.peculiarprimordials.entity.client.TapejaraRenderer;
 import net.thevaliantsquidward.peculiarprimordials.item.ModCreativeModeTabs;
 import net.thevaliantsquidward.peculiarprimordials.item.ModItems;
 import net.thevaliantsquidward.peculiarprimordials.sound.ModSounds;
@@ -70,6 +71,8 @@ public class PeculiarPrimordials
                     (ModEntities.NEILPEARTIA.get(), NeilpeartiaRenderer:: new);
             EntityRenderers.register
                     (ModEntities.BLOCHIUS.get(), BlochiusRenderer:: new);
+            EntityRenderers.register
+                    (ModEntities.TAPEJARA.get(), TapejaraRenderer:: new);
         }
     }
 }

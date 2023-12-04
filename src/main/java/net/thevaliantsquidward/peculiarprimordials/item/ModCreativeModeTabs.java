@@ -21,17 +21,23 @@ public class ModCreativeModeTabs {
 
                         //order:
 
-                        pOutput.accept(ModItems.RAW_NEILPEARTIA.get());
                         pOutput.accept(ModItems.RAW_BLOCHIUS.get());
+                        pOutput.accept(ModItems.RAW_NEILPEARTIA.get());
+                        pOutput.accept(ModItems.RAW_GIGANHINGA.get());
+                        pOutput.accept(ModItems.COOKED_GIGANHINGA.get());
 
-                        pOutput.accept(ModItems.NEILPEARTIA_SPAWN_EGG.get());
                         pOutput.accept(ModItems.BLOCHIUS_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.NEILPEARTIA_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.TAPEJARA_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.GIGANHINGA_SPAWN_EGG.get());
 
-                        pOutput.accept(ModItems.SHED_LURE.get());
                         pOutput.accept(ModItems.FISH_LEATHER.get());
+                        pOutput.accept(ModItems.SHED_LURE.get());
 
-                        pOutput.accept(ModItems.NEILPEARTIA_FLASK.get());
                         pOutput.accept(ModItems.BLOCHIUS_FLASK.get());
+                        pOutput.accept(ModItems.NEILPEARTIA_FLASK.get());
+                        pOutput.accept(ModItems.GIGANHINGA_FLASK.get());
+                        pOutput.accept(ModItems.TAPEJARA_FLASK.get());
 
                         pOutput.accept(ModItems.BLOCHIUS_BUCKET.get());
 

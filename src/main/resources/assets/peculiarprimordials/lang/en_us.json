@@ -3,15 +3,21 @@
 
   "item.peculiarprimordials.neilpeartia_spawn_egg" : "Neilpeartia Spawn Egg",
   "item.peculiarprimordials.blochius_spawn_egg" : "Blochius Spawn Egg",
+  "item.peculiarprimordials.tapejara_spawn_egg" : "Tapejara Spawn Egg",
+  "item.peculiarprimordials.giganhinga_spawn_egg" : "Giganhinga Spawn Egg",
 
   "item.peculiarprimordials.raw_neilpeartia" : "Raw Neilpeartia",
   "item.peculiarprimordials.raw_blochius" : "Raw Blochius",
+  "item.peculiarprimordials.raw_giganhinga" : "Raw Giganhinga",
+  "item.peculiarprimordials.roast_giganhinga" : "Roast Giganhinga",
 
   "item.peculiarprimordials.blochius_bucket" : "Bucket Of Blochius",
   "item.peculiarprimordials.shed_lure" : "Shed Lure",
 
   "item.peculiarprimordials.neilpeartia_flask" : "Neilpeartia DNA Flask",
   "item.peculiarprimordials.blochius_flask" : "Blochius DNA Flask",
+  "item.peculiarprimordials.giganhinga_flask" : "Giganhinga DNA Flask",
+  "item.peculiarprimordials.tapejara_flask" : "Tapejara DNA Flask",
 
   "item.peculiarprimordials.fish_leather" : "Fish Leather",
 
@@ -22,12 +28,16 @@
   "entity.peculiarprimordials.neilpeartia" : "Neilpeartia",
   "entity.peculiarprimordials.blochius" : "Blochius",
   "entity.peculiarprimordials.tapejara" : "Tapejara",
+  "entity.peculiarprimordials.giganhinga" : "Giganhinga",
 
   "peculiarprimordials.advancement.interact_neilpeartia" : "Rush Drummer",
   "peculiarprimordials.advancement.interact_neilpeartia.desc" : "Revive a Neilpeartia",
 
   "peculiarprimordials.advancement.interact_tapejara" : "Lord of the Ways",
   "peculiarprimordials.advancement.interact_tapejara.desc" : "Revive a Tapejara",
+
+  "peculiarprimordials.advancement.interact_giganhinga" : "A True Gigachad",
+  "peculiarprimordials.advancement.interact_giganhinga.desc" : "Revive a Giganhinga",
 
   "peculiarprimordials.advancement.interact_blochius" : "Needle (Fish) in a Haystack",
   "peculiarprimordials.advancement.interact_blochius.desc" : "Revive a Blochius"

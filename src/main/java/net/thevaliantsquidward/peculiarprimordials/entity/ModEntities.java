@@ -9,6 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.BlochiusEntity;
+import net.thevaliantsquidward.peculiarprimordials.entity.custom.GiganhingaEntity;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.NeilpeartiaEntity;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.TapejaraEntity;
 
@@ -36,6 +37,11 @@ public class ModEntities {
                             .sized(2.0F, 1.60F)
                             .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "tapejara").toString()));
 
+    public static final RegistryObject<EntityType<GiganhingaEntity>> GIGANHINGA =
+            ENTITY_TYPES.register("giganhinga",
+                    () -> EntityType.Builder.of(GiganhingaEntity::new, MobCategory.CREATURE)
+                            .sized(1.0F, 1.95F)
+                            .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "giganhinga").toString()));
 
 
     public static void register(IEventBus eventBus) {

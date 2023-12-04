@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
 import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.BlochiusEntity;
+import net.thevaliantsquidward.peculiarprimordials.entity.custom.GiganhingaEntity;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.NeilpeartiaEntity;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.TapejaraEntity;
 
@@ -17,5 +18,6 @@ public class ModEvents {
         event.put(ModEntities.NEILPEARTIA.get(), NeilpeartiaEntity.setAttributes());
         event.put(ModEntities.BLOCHIUS.get(), BlochiusEntity.setAttributes());
         event.put(ModEntities.TAPEJARA.get(), TapejaraEntity.setAttributes());
+        event.put(ModEntities.GIGANHINGA.get(), GiganhingaEntity.setAttributes());
     }
 }

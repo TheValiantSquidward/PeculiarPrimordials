@@ -1,10 +1,12 @@
 package net.thevaliantsquidward.peculiarprimordials.entity.custom;
 
 import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityBaseDinosaurAnimal;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -12,9 +14,18 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
 import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -24,6 +35,8 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
 import javax.annotation.Nonnull;
+import java.util.List;
+import java.util.Objects;
 
 public class GiganhingaEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
 
@@ -37,6 +50,33 @@ public class GiganhingaEntity extends EntityBaseDinosaurAnimal implements GeoEnt
         super(pEntityType, pLevel);
     }
 
+    public int eggTime = this.random.nextInt(6000) + 6000;
+    public void aiStep() {
+        super.aiStep();
+        if (!this.level().isClientSide && this.isAlive() && --this.eggTime <= 0) {
+            spawnRandomItems();
+            this.gameEvent(GameEvent.ENTITY_PLACE);
+            this.eggTime = this.random.nextInt(6000) + 6000;
+        }
+    }
+
+    private void spawnRandomItems() {
+        List<ItemStack> loot = getDigLoot(this);
+
+        if (!loot.isEmpty()) {
+            for (ItemStack itemStack : loot) {
+                spawnAtLocation(itemStack, 0.0F);
+            }
+            playSound(SoundEvents.CHICKEN_EGG, 1.0F, 1.0F);
+        }
+    }
+    private static final ResourceLocation LOOT_TABLE = new ResourceLocation(PeculiarPrimordials.MOD_ID, "gameplay/anhingaegglay");
+    private Level level;
+    private static List<ItemStack> getDigLoot(GiganhingaEntity entity) {
+        LootTable lootTable = Objects.requireNonNull(entity.level().getServer()).getLootData().getLootTable(LOOT_TABLE);
+        ServerLevel serverLevel = (ServerLevel) entity.level;
+        return lootTable.getRandomItems((new LootParams.Builder((ServerLevel) entity.level())).withParameter(LootContextParams.THIS_ENTITY, entity).create(LootContextParamSets.PIGLIN_BARTER));
+    }
 
     @Nullable
     @Override
@@ -107,9 +147,7 @@ public class GiganhingaEntity extends EntityBaseDinosaurAnimal implements GeoEnt
     }
 
 
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.CHICKEN_AMBIENT;
-    }
+
 
     protected SoundEvent getDeathSound() {
         return SoundEvents.CHICKEN_DEATH;

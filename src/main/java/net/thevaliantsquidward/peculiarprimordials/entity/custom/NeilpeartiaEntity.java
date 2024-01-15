@@ -1,5 +1,6 @@
 package net.thevaliantsquidward.peculiarprimordials.entity.custom;
 
+import com.peeko32213.unusualprehistory.common.entity.IHatchableEntity;
 import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityBaseDinosaurAnimal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -11,18 +12,28 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
 import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
 import net.thevaliantsquidward.peculiarprimordials.entity.ai.BottomWalkGoal;
@@ -33,7 +44,10 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import org.jetbrains.annotations.Nullable;
 
-public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
+import java.util.List;
+import java.util.Objects;
+
+public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEntity, IHatchableEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private Level level;
 
@@ -115,6 +129,7 @@ public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEn
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
+        this.entityData.define(IS_GULPING, false);
         this.entityData.define(VARIANT, 0);
     }
 
@@ -155,51 +170,45 @@ public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEn
         return ModEntities.NEILPEARTIA.get().create(serverLevel);
     }
 
-    public static String getVariantName(int variant) {
-        return switch (variant) {
-            case 1 -> "gold";
-            case 2 -> "kermit";
-            default -> "2frogfish";
-        };
-    }
-
-    //fishing code
     private static final ResourceLocation LOOT_TABLE = new ResourceLocation(PeculiarPrimordials.MOD_ID, "gameplay/frogfishing");
     private long lastSpawnTime = 0;
-    private final long spawnInterval = 4800;
-private NeilpeartiaEntity frogfish;
+    //4800
+    private final long spawnInterval = 1;
 
-   // @Override
-  // public void tick() {
-  //     super.tick();
+    @Override
+    public void customServerAiStep() {
+        super.customServerAiStep();
+        if (isInWater()) {
+            long currentTime = level().getGameTime();
+            long timeSinceLastSpawn = currentTime - lastSpawnTime;
 
-  //     if (level.isClientSide()) {
-  //         return;
-  //     }
+            if (timeSinceLastSpawn >= spawnInterval) {
+                spawnRandomItems();
+                lastSpawnTime = currentTime;
 
-  //     if (isInWater()) {
-  //         long currentTime = level.getGameTime();
-  //         long timeSinceLastSpawn = currentTime - lastSpawnTime;
+            }
+        }
+    }
 
-  //         if (timeSinceLastSpawn >= spawnInterval) {
-  //             spawnRandomItems();
-  //             lastSpawnTime = currentTime;
-  //         }
-  //     }
-  // }
-//    private void spawnRandomItems() {
-//        RandomSource randomsource = this.getRandom();
-//    LootContext.Builder lootcontext$builder = (new LootContext.Builder((ServerLevel)this.level)).withParameter(LootContextParams.ORIGIN, this.position()).withParameter(LootContextParams.THIS_ENTITY, this).withRandom(randomsource);
-//    LootTable loottable = this.level.getServer().getLootTables().get(LOOT_TABLE);
-//        for (ItemStack itemstack : loottable.getRandomItems(lootcontext$builder.create(LootContextParamSets.GIFT))) {
-//        this.level.addFreshEntity(new ItemEntity(this.level, this.getX(), this.getY(), this.getZ(), itemstack));
-//    }
-//        this.playSound(SoundEvents.FISHING_BOBBER_SPLASH);
-//
-//  }
+    private void spawnRandomItems() {
+        List<ItemStack> loot = getDigLoot(this);
+
+        if (!loot.isEmpty()) {
+            for (ItemStack itemStack : loot) {
+                spawnAtLocation(itemStack, 0.0F);
+
+            }
+
+            playSound(SoundEvents.FISHING_BOBBER_SPLASH, 1.0F, 1.0F);
+        }
+    }
+    private static List<ItemStack> getDigLoot(NeilpeartiaEntity entity) {
+        LootTable lootTable = Objects.requireNonNull(entity.level().getServer()).getLootData().getLootTable(LOOT_TABLE);
+        ServerLevel serverLevel = (ServerLevel) entity.level;
+        return lootTable.getRandomItems((new LootParams.Builder((ServerLevel) entity.level())).withParameter(LootContextParams.THIS_ENTITY, entity).create(LootContextParamSets.PIGLIN_BARTER));
+    }
 
     //sound code
-
     protected SoundEvent getAmbientSound() {
         return SoundEvents.TROPICAL_FISH_AMBIENT;
     }
@@ -221,6 +230,7 @@ private NeilpeartiaEntity frogfish;
 
     @Override
     public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "Gulp", 0, this::GulpController));
         controllers.add(new AnimationController<>(this, "Normal", 5, this::Controller));
     }
 
@@ -236,6 +246,60 @@ private NeilpeartiaEntity frogfish;
             event.getController().setAnimationSpeed(1.0D);
         }
         return PlayState.CONTINUE;
+    }
+    private static final RawAnimation FROGFISH_GULP = RawAnimation.begin().thenLoop("animation.model.gulp");
+    private static final EntityDataAccessor<Boolean> IS_GULPING = SynchedEntityData.defineId(NeilpeartiaEntity.class, EntityDataSerializers.BOOLEAN);
+
+
+    public void setGulping(boolean isPecking) {
+        this.entityData.set(IS_GULPING, isPecking);
+    }
+
+    public boolean isGulping() {
+        return this.entityData.get(IS_GULPING);
+    }
+    
+    //FROGFISH GULP GOAL
+
+    public class GulpGoal extends Goal {
+        private final NeilpeartiaEntity mammoth;
+
+        public GulpGoal(NeilpeartiaEntity mammoth) {
+            this.mammoth = mammoth;
+        }
+
+        @Override
+        public boolean canUse() {
+            return this.mammoth.onGround() && this.mammoth.getRandom().nextInt(100) == 0;
+        }
+
+        @Override
+        public void tick() {
+            this.mammoth.setGulping(true);
+            if (this.mammoth.getRandom().nextInt(100) <= 25) {
+                this.mammoth.setGulping(false);
+            }
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return this.canUse();
+        }
+
+        @Override
+        public void stop() {
+            this.mammoth.setGulping(false);
+        }
+    }
+
+    protected <E extends NeilpeartiaEntity> PlayState GulpController(final software.bernie.geckolib.core.animation.AnimationState<E> event) {
+        if (this.isGulping()) {
+            event.setAndContinue(FROGFISH_GULP);
+            return PlayState.CONTINUE;
+
+        }
+        event.getController().forceAnimationReset();
+        return PlayState.STOP;
     }
 
     @Override

@@ -46,7 +46,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.BLOCHIUS_BUCKET.get());
                         pOutput.accept(ModItems.LURE_DISC.get());
                         pOutput.accept(ModItems.GOLDEN_EGG.get());
-                        pOutput.accept(ModItems.GOLDEN_EGG.get());
+                        pOutput.accept(ModItems.INFERTILE_EGG.get());
 
 
                     })

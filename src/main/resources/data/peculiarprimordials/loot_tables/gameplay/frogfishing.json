@@ -7,23 +7,24 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "weight": 25,
+          "weight": 10,
           "quality": -2,
-          "name": "rustsfrogfish:gameplay/frogfishingtables/frogtrash"
+          "name": "peculiarprimordials:gameplay/frogfishingtables/frogtrash"
         },
         {
           "type": "minecraft:loot_table",
-          "weight": 25,
+          "weight": 5,
           "quality": 2,
-          "name": "rustsfrogfish:gameplay/frogfishingtables/frogtreasure"
+          "name": "peculiarprimordials:gameplay/frogfishingtables/frogtreasure"
         },
         {
           "type": "minecraft:loot_table",
-          "weight": 50,
+          "weight": 85,
           "quality": -1,
-          "name": "rustsfrogfish:gameplay/frogfishingtables/frogfishfish"
+          "name": "peculiarprimordials:gameplay/frogfishingtables/frogfishfish"
         }
       ]
     }
-  ]
+  ],
+  "random_sequence": "minecraft:gameplay/fishing"
 }

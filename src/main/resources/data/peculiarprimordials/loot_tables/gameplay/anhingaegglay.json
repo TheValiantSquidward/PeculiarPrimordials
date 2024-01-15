@@ -1,0 +1,19 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "peculiarprimordials:infertile_egg"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "peculiarprimordials:golden_egg"
+        }
+      ]
+    }
+  ]
+}

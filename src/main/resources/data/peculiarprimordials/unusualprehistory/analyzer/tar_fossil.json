@@ -1,0 +1,13 @@
+{
+  "input": ["unusualprehistory:tar_fossil_item"],
+  "entries": [
+    {
+      "weight": 15,
+      "item": "peculiarprimordials:giganhinga_flask"
+    },
+    {
+      "weight": 25,
+      "item": "peculiarprimordials:blochius_flask"
+    }
+  ]
+}

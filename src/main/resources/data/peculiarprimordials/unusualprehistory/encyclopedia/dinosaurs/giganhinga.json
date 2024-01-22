@@ -18,13 +18,13 @@
   "entity_button":[
     {
       "entity": "peculiarprimordials:giganhinga",
-      "x": 350,
+      "x": 320,
       "y": 40,
       "page" : 0,
       "scale": 1.2,
-      "entity_scale": 0.3,
-      "offset_x": 11,
-      "offset_y": 9,
+      "entity_scale": 0.56,
+      "offset_x": 3,
+      "offset_y": -11,
       "hover_text": "Giganhinga"
     }
   ]

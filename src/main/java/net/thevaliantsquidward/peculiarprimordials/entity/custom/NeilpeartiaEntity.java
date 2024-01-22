@@ -306,7 +306,8 @@ public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEn
         FROGFISH_WALK = RawAnimation.begin().thenLoop("animation.model.walk");
     }
     protected <E extends NeilpeartiaEntity> PlayState gulpController(AnimationState<E> event) {
-        if (this.getIsGulping()) {
+
+     if (this.getIsGulping()) {
             event.setAndContinue(FROGFISH_GULP);
             return PlayState.CONTINUE;
         } else {
@@ -325,7 +326,10 @@ public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEn
     }
 
     protected <E extends NeilpeartiaEntity> PlayState Controller(final software.bernie.geckolib.core.animation.AnimationState<E> event) {
-        if (this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6) {
+        if(this.isFromBook()){
+            return PlayState.CONTINUE;
+        }
+     if (this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6) {
             {
                 event.getController().setAnimation(RawAnimation.begin().thenLoop("animation.model.walk"));
                 event.getController().setAnimationSpeed(1.5D);

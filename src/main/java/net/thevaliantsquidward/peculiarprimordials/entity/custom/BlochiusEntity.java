@@ -143,8 +143,8 @@ public class BlochiusEntity extends AbstractFish implements GeoEntity, Bucketabl
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
-        geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.new", Animation.LoopType.LOOP));
-        return PlayState.CONTINUE;
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.new", Animation.LoopType.LOOP));
+            return PlayState.CONTINUE;
     }
 
     @Override

@@ -1,0 +1,11 @@
+{
+  "type": "unusualprehistory:cultivator",
+  "ingredients": [
+    {
+      "item": "peculiarprimordials:neilpeartia_flask"
+    }
+  ],
+  "output": {
+    "item": "peculiarprimordials:neilpeartia_eggs"
+  }
+}

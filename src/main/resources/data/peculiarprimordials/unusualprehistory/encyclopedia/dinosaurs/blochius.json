@@ -1,0 +1,31 @@
+{
+  "text": "blochius.txt",
+  "title": "  Blochius",
+  "page_to_go": "unusualprehistory:dinosaurs",
+  "entity_renders": [
+    {
+      "entity": "peculiarprimordials:blochius",
+      "x": 105,
+      "y": 90,
+      "page" : 0,
+      "scale": 0.7,
+      "rot_x": 30,
+      "rot_y": 225,
+      "rot_z": 0,
+      "follow_cursor": false
+    }
+  ],
+  "entity_button":[
+    {
+      "entity": "peculiarprimordials:blochius",
+      "x": 350,
+      "y": 40,
+      "page" : 0,
+      "scale": 1.2,
+      "entity_scale": 0.3,
+      "offset_x": 11,
+      "offset_y": 9,
+      "hover_text": "Blochius"
+    }
+  ]
+}

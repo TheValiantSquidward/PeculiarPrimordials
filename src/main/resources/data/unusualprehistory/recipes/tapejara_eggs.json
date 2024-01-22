@@ -1,0 +1,11 @@
+{
+  "type": "unusualprehistory:cultivator",
+  "ingredients": [
+    {
+      "item": "peculiarprimordials:tapejara_flask"
+    }
+  ],
+  "output": {
+    "item": "peculiarprimordials:tapejara_eggs"
+  }
+}

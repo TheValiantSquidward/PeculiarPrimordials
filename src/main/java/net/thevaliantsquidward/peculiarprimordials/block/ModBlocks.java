@@ -1,12 +1,15 @@
 package net.thevaliantsquidward.peculiarprimordials.block;
 
+import com.peeko32213.unusualprehistory.common.block.BlockDinosaurLandEggs;
 import com.peeko32213.unusualprehistory.common.block.BlockDinosaurWaterEggs;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PlaceOnWaterBlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -39,7 +42,23 @@ public class ModBlocks {
             ),
             entry -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
 
+    public static final Supplier<Block> GIGANHINGA_EGG = create("giganhinga_eggs",
+            () -> new BlockDinosaurLandEggs(
+                    BlockBehaviour.Properties.of().strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion(),
+                    ModEntities.GIGANHINGA, 3,
+                    Block.box(3.0D, 0.0D, 3.0D, 12.0D, 7.0D, 12.0D),
+                    Block.box(3.0D, 0.0D, 3.0D, 15.0D, 7.0D, 15.0D)
+            ),
+            entry -> new BlockItem(entry.get(), new Item.Properties()));
 
+    public static final Supplier<Block> TAPEJARA_EGG = create("tapejara_eggs",
+            () -> new BlockDinosaurLandEggs(
+                    BlockBehaviour.Properties.of().strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion(),
+                    ModEntities.TAPEJARA, 3,
+                    Block.box(3.0D, 0.0D, 3.0D, 12.0D, 7.0D, 12.0D),
+                    Block.box(1.0D, 0.0D, 1.0D, 15.0D, 7.0D, 15.0D)
+            ),
+            entry -> new BlockItem(entry.get(), new Item.Properties()));
 
     public static <B extends Block> RegistryObject<B> registerBlock(String name, Supplier<? extends B> supplier) {
         RegistryObject<B> block = BLOCKS.register(name, supplier);

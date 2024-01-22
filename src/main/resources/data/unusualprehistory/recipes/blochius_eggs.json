@@ -1,0 +1,11 @@
+{
+  "type": "unusualprehistory:cultivator",
+  "ingredients": [
+    {
+      "item": "peculiarprimordials:blochius_flask"
+    }
+  ],
+  "output": {
+    "item": "peculiarprimordials:blochius_eggs"
+  }
+}

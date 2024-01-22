@@ -42,7 +42,7 @@ public class GiganhingaEntity extends EntityBaseDinosaurAnimal implements GeoEnt
 
     private static final RawAnimation ANHINGA_WALK = RawAnimation.begin().thenLoop("animation.model.walk");
     private static final RawAnimation ANHINGA_IDLE = RawAnimation.begin().thenLoop("animation.model.idle");
-    private static final RawAnimation ANHINGA_SWIM = RawAnimation.begin().thenLoop("animation.model.floatswim");
+    private static final RawAnimation ANHINGA_SWIM = RawAnimation.begin().thenLoop("animation.model.idle");
 
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 

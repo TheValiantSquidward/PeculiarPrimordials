@@ -1,7 +1,53 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.model.new1": {
+		"animation.model.fly": {
+			"loop": true,
+			"bones": {
+				"bone7": {
+					"rotation": {
+						"vector": ["Math.cos((query.anim_time - 0.6) * 720) * -4", 0, 0]
+					}
+				},
+				"bone3": {
+					"rotation": {
+						"vector": [0, "Math.cos((query.anim_time - 0.1) * 720) * 10", "50 + Math.cos((query.anim_time - 0.0) * 720) * -20"]
+					}
+				},
+				"bone6": {
+					"rotation": {
+						"vector": [2.94737, "-2.1614+Math.cos((query.anim_time - 0.1) * 720) * 10", "-17.4761 + Math.cos((query.anim_time - 0.1) * 720) * -20"]
+					}
+				},
+				"bone5": {
+					"rotation": {
+						"vector": ["Math.cos((query.anim_time - 0.6) * 720) * -24", 0, 0]
+					},
+					"position": {
+						"vector": [0, 1, 0]
+					}
+				},
+				"bone4": {
+					"rotation": {
+						"vector": ["Math.cos((query.anim_time - 0.6) * 720) * -21.5", 0, 0]
+					},
+					"position": {
+						"vector": [0, 1, 0]
+					}
+				},
+				"bone2": {
+					"rotation": {
+						"vector": [0, "Math.cos((query.anim_time - 0.1) * 720) * -10", "-50 + Math.cos((query.anim_time - 0.0) * 720) * 20"]
+					}
+				},
+				"bone": {
+					"rotation": {
+						"vector": [3.55796, "Math.cos((query.anim_time - 0.1) * 720) * -7.6411", "17.4624 + Math.cos((query.anim_time - 0.1) * 720) * 20"]
+					}
+				}
+			}
+		},
+		"animation.model.new": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
@@ -10,7 +56,7 @@
 						"vector": ["Math.cos((query.anim_time - 0.0) * 360) * 5", 0, "Math.sin((query.anim_time - 0.0) * 360) * 1"]
 					},
 					"position": {
-						"vector": [0, "Math.cos((query.anim_time - 0.5) * 360) * -2", -4]
+						"vector": [0, "Math.cos((query.anim_time - 0.5) * 360) * -2", 0]
 					}
 				},
 				"bone8": {
@@ -18,14 +64,14 @@
 						"vector": ["math.cos((query.anim_time - 0.4)* 360)*4", 0, 0]
 					}
 				},
-				"bone2": {
+				"Wing2": {
 					"rotation": {
 						"vector": [0, 0, "math.cos((query.anim_time - 0.8)* 360)*20"]
 					}
 				},
-				"bone": {
+				"Wingtip2": {
 					"rotation": {
-						"1.0": {"pre": {"vector": [0, 0, "math.cos((query.anim_time - )* 360)*20"]}, "post": {"vector": [0, 0, "math.cos((query.anim_time - )* 360)*20"]}}
+						"vector": [0, 0, "math.cos((query.anim_time - )* 360)*20"]
 					}
 				},
 				"bone3": {
@@ -35,12 +81,12 @@
 				},
 				"bone6": {
 					"rotation": {
-						"1.0": {"pre": {"vector": [0, 0, "math.cos((query.anim_time - 0)* 360)*-20"]}, "post": {"vector": [0, 0, "math.cos((query.anim_time - 0)* 360)*-20"]}}
+						"vector": [0, 0, "math.cos((query.anim_time - 0)* 360)*-20"]
 					}
 				},
 				"bone5": {
 					"rotation": {
-						"0.25": {"pre": {"vector": ["math.cos((query.anim_time - 0.4)* 360)*20", 0, 0]}, "post": {"vector": ["math.cos((query.anim_time - 0.4)* 360)*20", 0, 0]}}
+						"vector": ["math.cos((query.anim_time - 0.4)* 360)*20", 0, 0]
 					}
 				},
 				"bone4": {
@@ -50,7 +96,7 @@
 				}
 			}
 		},
-		"animation.model.new4": {
+		"animation.model.new5": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
@@ -59,10 +105,10 @@
 						"vector": [-42.5, 0, 0]
 					},
 					"position": {
-						"vector": [0, 24, -15]
+						"vector": [0, 25, -18]
 					}
 				},
-				"bone7": {
+				"Body": {
 					"rotation": {
 						"vector": ["Math.cos((query.anim_time - 0.0) * 360) * 1", 0, "Math.sin((query.anim_time - 0.0) * 360) * 1"]
 					},
@@ -75,12 +121,112 @@
 						"vector": ["57.5+math.cos((query.anim_time + 0.8)* 360)*0.5", 0, 0]
 					}
 				},
+				"Wing2": {
+					"rotation": {
+						"vector": [30, "-42.5+math.cos((query.anim_time + 0.8)* 360)*20", 47.5]
+					}
+				},
+				"Wingtip2": {
+					"rotation": {
+						"vector": [0, 0, "-132.5+math.cos((query.anim_time + 0.8)* 360)*0.5"]
+					}
+				},
+				"bone3": {
+					"rotation": {
+						"vector": [30, "42.5 +math.cos((query.anim_time + 0.8)* 360)*20", -47.5]
+					}
+				},
+				"bone6": {
+					"rotation": {
+						"vector": [0, 0, "132.5+math.cos((query.anim_time - 0.8)* 360)*0.5"]
+					}
+				},
+				"bone5": {
+					"rotation": {
+						"vector": ["-47.5+Math.sin((query.anim_time - 0.0) * 360) * 15", 0, 0]
+					},
+					"position": {
+						"0.25": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 2, 0]
+						},
+						"0.75": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"bone4": {
+					"rotation": {
+						"vector": ["-50+Math.sin((query.anim_time - 0.0) * 360) * -15", 0, 0]
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 2, 0]
+						},
+						"0.25": {
+							"vector": [0, 0, 0]
+						},
+						"0.75": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 2, 0]
+						}
+					}
+				},
 				"bone2": {
+					"rotation": {
+						"vector": [15.77771, "-33.817 +math.cos((query.anim_time + 0.8)* 360)*20", 61.04325]
+					}
+				},
+				"bone": {
+					"rotation": {
+						"vector": [0, 0, -120]
+					}
+				}
+			}
+		},
+		"animation.model.new4": {
+			"loop": true,
+			"animation_length": 2.04167,
+			"bones": {
+				"bone11": {
+					"rotation": {
+						"vector": [-42.5, 0, 0]
+					},
+					"position": {
+						"vector": [0, 25, -18]
+					}
+				},
+				"Body": {
+					"rotation": {
+						"vector": ["Math.cos((query.anim_time - 0.0) * 360) * 1", 0, "Math.sin((query.anim_time - 0.0) * 360) * 1"]
+					},
+					"position": {
+						"vector": [0, "Math.cos((query.anim_time - 0.5) * 360) * -.5", 0]
+					}
+				},
+				"bone8": {
+					"rotation": {
+						"vector": ["57.5+math.cos((query.anim_time + 0.8)* 360)*0.5", 0, 0]
+					}
+				},
+				"bone9": {
+					"rotation": {
+						"vector": ["Math.cos((query.anim_time - 0.0) * 360) * 1", 0, "Math.sin((query.anim_time - 0.0) * 360) * 1"]
+					},
+					"position": {
+						"vector": [0, "Math.cos((query.anim_time - 0.5) * 360) * -.5", 0]
+					}
+				},
+				"Wing2": {
 					"rotation": {
 						"vector": [30, -42.5, 47.5]
 					}
 				},
-				"bone": {
+				"Wingtip2": {
 					"rotation": {
 						"vector": [0, 0, "-132.5+math.cos((query.anim_time + 0.8)* 360)*0.5"]
 					}
@@ -104,22 +250,51 @@
 					"rotation": {
 						"vector": [-37.5, 0, 0]
 					}
+				},
+				"bone2": {
+					"rotation": {
+						"vector": [39.32269, -42.14507, 39.32269]
+					}
+				},
+				"bone": {
+					"rotation": {
+						"vector": [0, 0, "227.5+math.cos((query.anim_time - 0.8)* 360)*0.5"]
+					}
 				}
 			}
 		},
-		"animation.model.new5": {
+		"animation.model.new2": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
 				"bone11": {
 					"rotation": {
-						"vector": [-42.5, 0, 0]
+						"0.0": {
+							"vector": [-42.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [42.47283, 1.68868, 178.15627]
+						},
+						"2.0": {
+							"vector": [-42.5, 0, 0]
+						}
 					},
 					"position": {
-						"vector": [0, 24, -15]
+						"vector": [0, 25, -18]
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [1, 8.5, 1]
+						},
+						"2.0": {
+							"vector": [1, 1, 1]
+						}
 					}
 				},
-				"bone7": {
+				"Body": {
 					"rotation": {
 						"vector": ["Math.cos((query.anim_time - 0.0) * 360) * 1", 0, "Math.sin((query.anim_time - 0.0) * 360) * 1"]
 					},
@@ -132,12 +307,12 @@
 						"vector": ["57.5+math.cos((query.anim_time + 0.8)* 360)*0.5", 0, 0]
 					}
 				},
-				"bone2": {
+				"Wing2": {
 					"rotation": {
 						"vector": [30, "-42.5+math.cos((query.anim_time + 0.8)* 360)*20", 47.5]
 					}
 				},
-				"bone": {
+				"Wingtip2": {
 					"rotation": {
 						"vector": [0, 0, "-132.5+math.cos((query.anim_time + 0.8)* 360)*0.5"]
 					}

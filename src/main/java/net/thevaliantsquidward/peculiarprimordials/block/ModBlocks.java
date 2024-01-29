@@ -34,6 +34,12 @@ public class ModBlocks {
                     false
             ),
             entry -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
+    public static final Supplier<Block> FOREYIA_EGGS = create("foreyia_eggs",
+            () -> new BlockDinosaurWaterEggs(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().noOcclusion().noCollission().randomTicks(),
+                    ModEntities.FOREYIA,
+                    false
+            ),
+            entry -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
 
     public static final Supplier<Block> BLOCHIUS_EGGS = create("blochius_eggs",
             () -> new BlockDinosaurWaterEggs(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().noOcclusion().noCollission().randomTicks(),
@@ -57,6 +63,15 @@ public class ModBlocks {
                     ModEntities.TAPEJARA, 3,
                     Block.box(3.0D, 0.0D, 3.0D, 12.0D, 7.0D, 12.0D),
                     Block.box(1.0D, 0.0D, 1.0D, 15.0D, 7.0D, 15.0D)
+            ),
+            entry -> new BlockItem(entry.get(), new Item.Properties()));
+
+    public static final Supplier<Block> DOMEYKODACTYLUS = create("domeykodactylus_eggs",
+            () -> new BlockDinosaurLandEggs(
+                    BlockBehaviour.Properties.of().strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion(),
+                    ModEntities.DOMEYKODACTYLUS, 2,
+                    Block.box(4, 0, 8, 11, 9, 15),
+                    Block.box(2, 0, 1, 14, 10, 15)
             ),
             entry -> new BlockItem(entry.get(), new Item.Properties()));
 

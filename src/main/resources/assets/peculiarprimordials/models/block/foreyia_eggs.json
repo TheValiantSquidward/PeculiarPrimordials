@@ -1,0 +1,7 @@
+{
+  "parent": "unusualprehistory:block/template_eggs/template_flat_water_egg",
+  "textures": {
+    "texture": "peculiarprimordials:block/foreyia_eggs_block"
+  },
+  "render_type": "cutout"
+}

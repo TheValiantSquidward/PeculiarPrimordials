@@ -28,6 +28,8 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.COOKED_GIGANHINGA.get());
 
                         pOutput.accept(ModItems.BLOCHIUS_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.DOMEY_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.FOREYIA_SPAWN_EGG.get());
                         pOutput.accept(ModItems.NEILPEARTIA_SPAWN_EGG.get());
                         pOutput.accept(ModItems.TAPEJARA_SPAWN_EGG.get());
                         pOutput.accept(ModItems.GIGANHINGA_SPAWN_EGG.get());
@@ -36,11 +38,15 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.SHED_LURE.get());
 
                         pOutput.accept(ModItems.BLOCHIUS_FLASK.get());
+                        pOutput.accept(ModItems.DOMEY_FLASK.get());
+                        pOutput.accept(ModItems.FOREYIA_FLASK.get());
                         pOutput.accept(ModItems.NEILPEARTIA_FLASK.get());
                         pOutput.accept(ModItems.GIGANHINGA_FLASK.get());
                         pOutput.accept(ModItems.TAPEJARA_FLASK.get());
 
                         pOutput.accept(ModBlocks.BLOCHIUS_EGGS.get());
+                        pOutput.accept(ModBlocks.DOMEYKODACTYLUS.get());
+                        pOutput.accept(ModBlocks.FOREYIA_EGGS.get());
                         pOutput.accept(ModBlocks.NEILPEARTIA_EGGS.get());
                         pOutput.accept(ModBlocks.GIGANHINGA_EGG.get());
                         pOutput.accept(ModBlocks.TAPEJARA_EGG.get());

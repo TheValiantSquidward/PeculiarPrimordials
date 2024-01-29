@@ -1,0 +1,69 @@
+{
+  "parent": "minecraft:main/egg",
+  "criteria": {
+    "damage_dunk": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "peculiarprimordials:domeykodactylus"
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    },
+    "interact_dunk": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "peculiarprimordials:domeykodactylus"
+            }
+          }
+        ],
+        "item": {}
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    },
+    "killed_dunk": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "peculiarprimordials:domeykodactylus"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "peculiarprimordials.advancement.interact_domeykodactylus.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "peculiarprimordials:domeykodactylus_flask"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "peculiarprimordials.advancement.interact_domeykodactylus"
+    }
+  },
+  "requirements": [
+    [
+      "damage_dunk",
+      "interact_dunk",
+      "killed_dunk"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

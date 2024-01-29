@@ -1,0 +1,31 @@
+{
+  "text": "foreyia.txt",
+  "title": "  Foreyia",
+  "page_to_go": "unusualprehistory:dinosaurs",
+  "entity_renders": [
+    {
+      "entity": "peculiarprimordials:foreyia",
+      "x": 105,
+      "y": 90,
+      "page" : 0,
+      "scale": 0.7,
+      "rot_x": 30,
+      "rot_y": 225,
+      "rot_z": 0,
+      "follow_cursor": false
+    }
+  ],
+  "entity_button":[
+    {
+      "entity": "peculiarprimordials:foreyia",
+      "x": 290,
+      "y": 80,
+      "page" : 0,
+      "scale": 0.7,
+      "entity_scale": 1,
+      "offset_x": 3,
+      "offset_y": -6,
+      "hover_text": "Foreyia"
+    }
+  ]
+}

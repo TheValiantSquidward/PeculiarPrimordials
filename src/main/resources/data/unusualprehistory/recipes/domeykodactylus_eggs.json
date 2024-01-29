@@ -1,0 +1,11 @@
+{
+  "type": "unusualprehistory:cultivator",
+  "ingredients": [
+    {
+      "item": "peculiarprimordials:domeykodactylus_flask"
+    }
+  ],
+  "output": {
+    "item": "peculiarprimordials:domeykodactylus_eggs"
+  }
+}

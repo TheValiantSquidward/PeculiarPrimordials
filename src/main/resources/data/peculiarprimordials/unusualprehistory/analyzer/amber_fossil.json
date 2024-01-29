@@ -4,6 +4,10 @@
     {
       "weight": 15,
       "item": "peculiarprimordials:tapejara_flask"
+    },
+    {
+      "weight": 10,
+      "item": "peculiarprimordials:foreyia_flask"
     }
   ]
 }

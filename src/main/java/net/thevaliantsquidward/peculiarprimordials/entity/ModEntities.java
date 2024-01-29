@@ -8,10 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
-import net.thevaliantsquidward.peculiarprimordials.entity.custom.BlochiusEntity;
-import net.thevaliantsquidward.peculiarprimordials.entity.custom.GiganhingaEntity;
-import net.thevaliantsquidward.peculiarprimordials.entity.custom.NeilpeartiaEntity;
-import net.thevaliantsquidward.peculiarprimordials.entity.custom.TapejaraEntity;
+import net.thevaliantsquidward.peculiarprimordials.entity.custom.*;
 
 public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
@@ -23,6 +20,18 @@ public class ModEntities {
                     () -> EntityType.Builder.of(NeilpeartiaEntity::new, MobCategory.WATER_AMBIENT)
                             .sized(2.3F, 1.95F)
                             .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "neilpeartia").toString()));
+
+    public static final RegistryObject<EntityType<ForeyiaEntity>> FOREYIA =
+            ENTITY_TYPES.register("foreyia",
+                    () -> EntityType.Builder.of(ForeyiaEntity::new, MobCategory.WATER_AMBIENT)
+                            .sized(2.3F, 1.95F)
+                            .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "foreyia").toString()));
+
+    public static final RegistryObject<EntityType<DomeykodactylusEntity>> DOMEYKODACTYLUS =
+            ENTITY_TYPES.register("domeykodactylus",
+                    () -> EntityType.Builder.of(DomeykodactylusEntity::new, MobCategory.CREATURE)
+                            .sized(2.3F, 1.95F)
+                            .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "domeykodactylus").toString()));
 
 
     public static final RegistryObject<EntityType<BlochiusEntity>> BLOCHIUS =

@@ -17,14 +17,14 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<NeilpeartiaEntity>> NEILPEARTIA =
             ENTITY_TYPES.register("neilpeartia",
-                    () -> EntityType.Builder.of(NeilpeartiaEntity::new, MobCategory.WATER_AMBIENT)
+                    () -> EntityType.Builder.of(NeilpeartiaEntity::new, MobCategory.WATER_CREATURE)
                             .sized(2.3F, 1.95F)
                             .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "neilpeartia").toString()));
 
     public static final RegistryObject<EntityType<ForeyiaEntity>> FOREYIA =
             ENTITY_TYPES.register("foreyia",
-                    () -> EntityType.Builder.of(ForeyiaEntity::new, MobCategory.WATER_AMBIENT)
-                            .sized(2.3F, 1.95F)
+                    () -> EntityType.Builder.of(ForeyiaEntity::new, MobCategory.WATER_CREATURE)
+                            .sized(2.0F, 1.70F)
                             .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "foreyia").toString()));
 
     public static final RegistryObject<EntityType<DomeykodactylusEntity>> DOMEYKODACTYLUS =
@@ -32,6 +32,12 @@ public class ModEntities {
                     () -> EntityType.Builder.of(DomeykodactylusEntity::new, MobCategory.CREATURE)
                             .sized(2.3F, 1.95F)
                             .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "domeykodactylus").toString()));
+
+    public static final RegistryObject<EntityType<HarboroteuthisEntity>> HARBOROTEUTHIS =
+            ENTITY_TYPES.register("harboroteuthis",
+                    () -> EntityType.Builder.of(HarboroteuthisEntity::new, MobCategory.WATER_CREATURE)
+                            .sized(2.3F, 1.95F)
+                            .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "harboroteuthis").toString()));
 
 
     public static final RegistryObject<EntityType<BlochiusEntity>> BLOCHIUS =

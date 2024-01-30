@@ -30,6 +30,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.BLOCHIUS_SPAWN_EGG.get());
                         pOutput.accept(ModItems.DOMEY_SPAWN_EGG.get());
                         pOutput.accept(ModItems.FOREYIA_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.HARBORO_SPAWN_EGG.get());
                         pOutput.accept(ModItems.NEILPEARTIA_SPAWN_EGG.get());
                         pOutput.accept(ModItems.TAPEJARA_SPAWN_EGG.get());
                         pOutput.accept(ModItems.GIGANHINGA_SPAWN_EGG.get());
@@ -40,6 +41,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.BLOCHIUS_FLASK.get());
                         pOutput.accept(ModItems.DOMEY_FLASK.get());
                         pOutput.accept(ModItems.FOREYIA_FLASK.get());
+                        pOutput.accept(ModItems.HARBORO_FLASK.get());
                         pOutput.accept(ModItems.NEILPEARTIA_FLASK.get());
                         pOutput.accept(ModItems.GIGANHINGA_FLASK.get());
                         pOutput.accept(ModItems.TAPEJARA_FLASK.get());

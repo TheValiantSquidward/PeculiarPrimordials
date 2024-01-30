@@ -7,6 +7,7 @@
   "item.peculiarprimordials.giganhinga_spawn_egg" : "Giganhinga Spawn Egg",
   "item.peculiarprimordials.foreyia_spawn_egg" : "Foreyia Spawn Egg",
   "item.peculiarprimordials.domeykodactylus_spawn_egg" : "Domeykodactylus Spawn Egg",
+  "item.peculiarprimordials.harboroteuthis_spawn_egg" : "Harboroteuthis Spawn Egg",
 
   "item.peculiarprimordials.raw_neilpeartia" : "Raw Neilpeartia",
   "item.peculiarprimordials.raw_blochius" : "Raw Blochius",
@@ -24,6 +25,7 @@
   "item.peculiarprimordials.tapejara_flask" : "Tapejara DNA Flask",
   "item.peculiarprimordials.foreyia_flask" : "Foreyia DNA Flask",
   "item.peculiarprimordials.domeykodactylus_flask" : "Domeykodactylus DNA Flask",
+  "item.peculiarprimordials.harboroteuthis_flask" : "Harboroteuthis DNA Flask",
 
   "item.peculiarprimordials.fish_leather" : "Fish Leather",
 
@@ -44,6 +46,7 @@
   "entity.peculiarprimordials.giganhinga" : "Giganhinga",
   "entity.peculiarprimordials.foreyia" : "Foreyia",
   "entity.peculiarprimordials.domeykodactylus" : "Domeykodactylus",
+  "entity.peculiarprimordials.harboroteuthis" : "Harboroteuthis",
 
   "peculiarprimordials.advancement.interact_neilpeartia" : "Rush Drummer",
   "peculiarprimordials.advancement.interact_neilpeartia.desc" : "Revive a Neilpeartia",

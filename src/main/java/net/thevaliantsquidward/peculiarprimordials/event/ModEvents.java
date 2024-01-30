@@ -18,5 +18,6 @@ public class ModEvents {
         event.put(ModEntities.GIGANHINGA.get(), GiganhingaEntity.setAttributes());
         event.put(ModEntities.FOREYIA.get(), ForeyiaEntity.setAttributes());
         event.put(ModEntities.DOMEYKODACTYLUS.get(), DomeykodactylusEntity.setAttributes());
+        event.put(ModEntities.HARBOROTEUTHIS.get(), HarboroteuthisEntity.setAttributes());
     }
 }

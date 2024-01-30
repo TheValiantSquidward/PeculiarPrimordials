@@ -1,10 +1,10 @@
 {
-  "text": "foreyia.txt",
-  "title": "  Foreyia",
+  "text": "harboroteuthis.txt",
+  "title": "  Harboroteuthis",
   "page_to_go": "unusualprehistory:dinosaurs",
   "entity_renders": [
     {
-      "entity": "peculiarprimordials:foreyia",
+      "entity": "peculiarprimordials:harboroteuthis",
       "x": 105,
       "y": 90,
       "page" : 0,
@@ -17,15 +17,15 @@
   ],
   "entity_button":[
     {
-      "entity": "peculiarprimordials:foreyia",
-      "x": 350,
-      "y": 40,
+      "entity": "peculiarprimordials:harboroteuthis",
+      "x": 290,
+      "y": 80,
       "page" : 0,
       "scale": 1.2,
-      "entity_scale": 0.3,
-      "offset_x": 11,
-      "offset_y": -30,
-      "hover_text": "Foreyia"
+      "entity_scale": 1,
+      "offset_x": 3,
+      "offset_y": -6,
+      "hover_text": "Harboroteuthis"
     }
   ]
 }

@@ -27,6 +27,9 @@ public class ModItems {
     public static final RegistryObject<Item> DOMEY_SPAWN_EGG = ITEMS.register("domeykodactylus_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.DOMEYKODACTYLUS, 0x3b3649, 0xcf4333, new Item.Properties()));
 
+    public static final RegistryObject<Item> HARBORO_SPAWN_EGG = ITEMS.register("harboroteuthis_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.HARBOROTEUTHIS, 0x524a51, 0xdda822, new Item.Properties()));
+
     public static final RegistryObject<Item> FOREYIA_SPAWN_EGG = ITEMS.register("foreyia_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.FOREYIA, 0x3188be, 0x52968e, new Item.Properties()));
 
@@ -56,6 +59,8 @@ public class ModItems {
     public static final RegistryObject<Item> FOREYIA_FLASK = ITEMS.register("foreyia_flask", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> DOMEY_FLASK = ITEMS.register("domeykodactylus_flask", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HARBORO_FLASK = ITEMS.register("harboroteuthis_flask", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> GIGANHINGA_FLASK = ITEMS.register("giganhinga_flask", () -> new Item(new Item.Properties()));
 

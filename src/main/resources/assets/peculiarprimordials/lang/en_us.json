@@ -24,29 +24,23 @@
   "item.peculiarprimordials.giganhinga_flask" : "Giganhinga DNA Flask",
   "item.peculiarprimordials.tapejara_flask" : "Tapejara DNA Flask",
   "item.peculiarprimordials.foreyia_flask" : "Foreyia DNA Flask",
-  "item.peculiarprimordials.domeykodactylus_flask" : "Domeykodactylus DNA Flask",
-  "item.peculiarprimordials.harboroteuthis_flask" : "Harboroteuthis DNA Flask",
 
   "item.peculiarprimordials.fish_leather" : "Fish Leather",
 
   "item.peculiarprimordials.lure_disc" : "Music Disc",
-  "item.peculiarprimordials.lure_disc.desc" : "TheValiantSquidward - Lure",
+  "item.peculiarprimordials.lure_disc.desc" : "TheValiantSquidward - Allure",
 
   "block.peculiarprimordials.neilpeartia_eggs" : "Neilpeartia Eggs",
   "block.peculiarprimordials.blochius_eggs" : "Blochius Eggs",
   "block.peculiarprimordials.giganhinga_eggs" : "Giganhinga Eggs",
   "block.peculiarprimordials.tapejara_eggs" : "Tapejara Eggs",
   "block.peculiarprimordials.foreyia_eggs" : "Foreyia Eggs",
-  "block.peculiarprimordials.domeykodactylus_eggs" : "Domeykodactylus Eggs",
-
 
   "entity.peculiarprimordials.neilpeartia" : "Neilpeartia",
   "entity.peculiarprimordials.blochius" : "Blochius",
   "entity.peculiarprimordials.tapejara" : "Tapejara",
   "entity.peculiarprimordials.giganhinga" : "Giganhinga",
   "entity.peculiarprimordials.foreyia" : "Foreyia",
-  "entity.peculiarprimordials.domeykodactylus" : "Domeykodactylus",
-  "entity.peculiarprimordials.harboroteuthis" : "Harboroteuthis",
 
   "peculiarprimordials.advancement.interact_neilpeartia" : "Rush Drummer",
   "peculiarprimordials.advancement.interact_neilpeartia.desc" : "Revive a Neilpeartia",
@@ -61,8 +55,6 @@
   "peculiarprimordials.advancement.interact_blochius.desc" : "Revive a Blochius",
 
   "peculiarprimordials.advancement.interact_foreyia" : "All for one and one Foreyiall",
-  "peculiarprimordials.advancement.interact_foreyia.desc" : "Revive a Foreyia",
+  "peculiarprimordials.advancement.interact_foreyia.desc" : "Revive a Foreyia"
 
-  "peculiarprimordials.advancement.interact_domeykodactylus" : "Domeykowhatnow?",
-  "peculiarprimordials.advancement.interact_domeykodactylus.desc" : "Revive a Domeykodactylus"
 }

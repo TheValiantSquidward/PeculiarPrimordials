@@ -78,10 +78,6 @@ public class PeculiarPrimordials
                     (ModEntities.GIGANHINGA.get(), GiganhingaRenderer:: new);
             EntityRenderers.register
                     (ModEntities.FOREYIA.get(), ForeyiaRenderer:: new);
-            EntityRenderers.register
-                    (ModEntities.DOMEYKODACTYLUS.get(), DomeykodactylusRenderer:: new);
-            EntityRenderers.register
-                    (ModEntities.HARBOROTEUTHIS.get(), HarboroteuthisRenderer:: new);
         }
     }
 }

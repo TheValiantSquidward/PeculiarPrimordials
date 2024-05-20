@@ -125,6 +125,13 @@ if (produceItem) {
     if (tickertimer >= 100) {
         tickertimer = 0;
         this.spawnAtLocation(Items.SAND);
+        this.spawnAtLocation(Items.SAND);
+        this.spawnAtLocation(Items.SAND);
+        this.spawnAtLocation(Items.SAND);
+        this.spawnAtLocation(Items.SAND);
+        this.spawnAtLocation(Items.SAND);
+        this.spawnAtLocation(Items.SAND);
+        this.spawnAtLocation(Items.SAND);
         this.playSound(SoundEvents.PLAYER_BURP, 1.0F, 1.0F);
         produceItem = false;
     }

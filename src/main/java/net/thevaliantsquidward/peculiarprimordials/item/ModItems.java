@@ -24,11 +24,6 @@ public class ModItems {
 
     public static final RegistryObject<Item> BLOCHIUS_SPAWN_EGG = ITEMS.register("blochius_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.BLOCHIUS, 0x94b8de, 0xe0e0e0, new Item.Properties()));
-    public static final RegistryObject<Item> DOMEY_SPAWN_EGG = ITEMS.register("domeykodactylus_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntities.DOMEYKODACTYLUS, 0x3b3649, 0xcf4333, new Item.Properties()));
-
-    public static final RegistryObject<Item> HARBORO_SPAWN_EGG = ITEMS.register("harboroteuthis_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntities.HARBOROTEUTHIS, 0x524a51, 0xdda822, new Item.Properties()));
 
     public static final RegistryObject<Item> FOREYIA_SPAWN_EGG = ITEMS.register("foreyia_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.FOREYIA, 0x3188be, 0x52968e, new Item.Properties()));
@@ -58,16 +53,11 @@ public class ModItems {
 
     public static final RegistryObject<Item> FOREYIA_FLASK = ITEMS.register("foreyia_flask", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> DOMEY_FLASK = ITEMS.register("domeykodactylus_flask", () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> HARBORO_FLASK = ITEMS.register("harboroteuthis_flask", () -> new Item(new Item.Properties()));
-
     public static final RegistryObject<Item> GIGANHINGA_FLASK = ITEMS.register("giganhinga_flask", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> FISH_LEATHER = ITEMS.register("fish_leather", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> BLOCHIUS_BUCKET = ITEMS.register("blochius_bucket", () -> new ItemFishBucket(ModEntities.BLOCHIUS, Fluids.WATER, new Item.Properties()));
-    public static final RegistryObject<Item> FOREYIA_BUCKET = ITEMS.register("foreyia_bucket", () -> new ItemFishBucket(ModEntities.FOREYIA, Fluids.WATER, new Item.Properties()));
     public static final RegistryObject<Item> LURE_DISC = ITEMS.register("lure_disc",
             () -> new RecordItem(2, ModSounds.LURE, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC), 2600));
 

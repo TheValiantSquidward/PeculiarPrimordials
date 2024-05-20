@@ -27,19 +27,6 @@ public class ModEntities {
                             .sized(2.0F, 1.70F)
                             .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "foreyia").toString()));
 
-    public static final RegistryObject<EntityType<DomeykodactylusEntity>> DOMEYKODACTYLUS =
-            ENTITY_TYPES.register("domeykodactylus",
-                    () -> EntityType.Builder.of(DomeykodactylusEntity::new, MobCategory.CREATURE)
-                            .sized(2.3F, 1.95F)
-                            .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "domeykodactylus").toString()));
-
-    public static final RegistryObject<EntityType<HarboroteuthisEntity>> HARBOROTEUTHIS =
-            ENTITY_TYPES.register("harboroteuthis",
-                    () -> EntityType.Builder.of(HarboroteuthisEntity::new, MobCategory.WATER_CREATURE)
-                            .sized(2.3F, 1.95F)
-                            .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "harboroteuthis").toString()));
-
-
     public static final RegistryObject<EntityType<BlochiusEntity>> BLOCHIUS =
             ENTITY_TYPES.register("blochius",
                     () -> EntityType.Builder.of(BlochiusEntity::new, MobCategory.WATER_AMBIENT)

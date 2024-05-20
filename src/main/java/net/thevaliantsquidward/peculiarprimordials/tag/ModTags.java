@@ -9,4 +9,6 @@ import static net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials.MO
 
 public interface ModTags {
     TagKey<Item> FOREYIA_FOOD = TagKey.create(Registries.ITEM, new ResourceLocation(MOD_ID, "foreyia_food"));
+    TagKey<Item> NEIL_FOOD = TagKey.create(Registries.ITEM, new ResourceLocation(MOD_ID, "neil_food"));
+
 }

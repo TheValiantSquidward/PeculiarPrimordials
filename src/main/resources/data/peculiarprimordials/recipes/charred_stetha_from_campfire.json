@@ -3,9 +3,9 @@
   "category": "misc",
   "cookingtime": 600,
   "experience": 1.0,
-  "group": "roast_giganhinga",
+  "group": "charred_stetha",
   "ingredient": {
-    "item": "peculiarprimordials:raw_giganhinga"
+    "item": "unusualprehistory:cooked_stetha"
   },
-  "result": "peculiarprimordials:roast_giganhinga"
+  "result": "peculiarprimordials:charred_stetha"
 }

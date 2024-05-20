@@ -70,6 +70,7 @@ public class GiganhingaEntity extends EntityBaseDinosaurAnimal implements GeoEnt
             playSound(SoundEvents.CHICKEN_EGG, 1.0F, 1.0F);
         }
     }
+
     private static final ResourceLocation LOOT_TABLE = new ResourceLocation(PeculiarPrimordials.MOD_ID, "gameplay/anhingaegglay");
     private Level level;
     private static List<ItemStack> getDigLoot(GiganhingaEntity entity) {

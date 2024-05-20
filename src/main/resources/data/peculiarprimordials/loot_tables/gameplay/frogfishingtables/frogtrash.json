@@ -22,6 +22,11 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 10,
+          "name": "unusualprehistory:nelumbites"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 15,
           "name": "unusualprehistory:organic_ooze"
         },

@@ -6,6 +6,8 @@ import com.peeko32213.unusualprehistory.common.entity.IHatchableEntity;
 import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityBaseDinosaurAnimal;
 import com.peeko32213.unusualprehistory.core.registry.UPItems;
 import com.peeko32213.unusualprehistory.core.registry.UPSounds;
+import com.peeko32213.unusualprehistory.core.registry.UPTags;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -18,7 +20,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -29,12 +34,14 @@ import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -43,9 +50,12 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
 import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
 import net.thevaliantsquidward.peculiarprimordials.entity.ai.BottomWalkGoal;
+import net.thevaliantsquidward.peculiarprimordials.item.ModItems;
+import net.thevaliantsquidward.peculiarprimordials.tag.ModTags;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
@@ -57,23 +67,23 @@ import java.util.List;
 import java.util.Objects;
 
 public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEntity, IHatchableEntity {
-    private static final EntityDataAccessor<Integer> GULPING_TIME;
-    private static final EntityDataAccessor<Boolean> GULPING;
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private Level level;
 
-    public float prevGulpProgress;
-    public float gulpProgress;
-    public float gulpSoundTimer;
     public static final Logger LOGGER;
     private static final RawAnimation FROGFISH_WALK;
     private static final RawAnimation FROGFISH_IDLE;
-    private static final RawAnimation FROGFISH_GULP;
+
 
     public NeilpeartiaEntity(EntityType<? extends EntityBaseDinosaurAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.gulpSoundTimer = 100.0F;
     }
+
+@Override
+public boolean isFood(ItemStack stack) {
+        return stack.is(ModTags.NEIL_FOOD);
+    }
+
 
     public MobType getMobType() {
         return MobType.WATER;
@@ -142,31 +152,17 @@ public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEn
                 .add(Attributes.MOVEMENT_SPEED, 0.2f)
                 .add(Attributes.MAX_HEALTH, 16.0D).build();
     }
-    public boolean getIsGulping() {
-        return (Boolean)this.entityData.get(GULPING);
-    }
-
-    public void setIsGulping(boolean preening) {
-        this.entityData.set(GULPING, preening);
-    }
-
-    public int getGulpingTime() {
-        return (Integer)this.entityData.get(GULPING_TIME);
-    }
-
-    public void setGulpingTime(int shaking) {
-        this.entityData.set(GULPING_TIME, shaking);
-    }
 
     //variant code
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(NeilpeartiaEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> PASSIVE = SynchedEntityData.defineId(NeilpeartiaEntity.class, EntityDataSerializers.BOOLEAN);
+
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(VARIANT, 0);
-        this.entityData.define(GULPING_TIME, 0);
-        this.entityData.define(GULPING, false);
+        this.entityData.define(IS_GULPING, false);
     }
 
     public int getVariant() {
@@ -180,27 +176,68 @@ public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEn
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putInt("Variant", this.getVariant());
-        compound.putInt("gulpingTime", this.getGulpingTime());
-        compound.putBoolean("isGulping", this.getIsGulping());
+
     }
 
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         this.setVariant(compound.getInt("Variant"));
-        this.setGulpingTime(compound.getInt("gulpingTime"));
-        this.setIsGulping(compound.getBoolean("isGulping"));
+
     }
 
     public void determineVariant(int variantChange){
-        if(variantChange <= 1){
+        if(isKermit()) {
             this.setVariant(2);
-        }else if(variantChange <= 30){
+        } else if (variantChange <= 30){
             this.setVariant(1);
         }else{
             this.setVariant(0);
         }
     }
-@Override
+
+    public boolean isKermit() {
+        String s = ChatFormatting.stripFormatting(this.getName().getString());
+        return s != null && s.toLowerCase().contains("kermit");
+    }
+
+
+    public boolean passive = false;
+
+    @Override
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
+        if (itemstack.getItem() == UPItems.GOLDEN_SCAU.get() && !this.passive) {
+
+            if (!this.level().isClientSide) {
+
+                if (!player.isCreative()) {
+                    itemstack.shrink(1);
+                }
+
+                this.heal(20.0F);
+                this.playSound(SoundEvents.GENERIC_EAT, 1.0F, 1.0F);
+                this.passive = true;
+                return InteractionResult.SUCCESS;
+            }
+        } else
+        if (itemstack.getItem() == ModItems.CHARRED_STETHACANTHUS.get() && this.passive) {
+
+            if (!this.level().isClientSide) {
+
+                if (!player.isCreative()) {
+                    itemstack.shrink(1);
+                }
+
+                this.heal(10.0F);
+                this.playSound(SoundEvents.GENERIC_EAT, 1.0F, 1.0F);
+                this.passive = false;
+                return InteractionResult.SUCCESS;
+            }
+        }
+        return InteractionResult.FAIL;
+    }
+
+    @Override
 @Nullable
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType reason, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag) {
         int variantChange = this.random.nextInt(0, 100);
@@ -209,6 +246,11 @@ public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEn
         return super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
     }
 
+    public boolean isInvulnerableTo(DamageSource source) {
+        return source.is(DamageTypes.IN_WALL) || super.isInvulnerableTo(source);
+    }
+
+
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob pOtherParent) {
@@ -216,68 +258,44 @@ public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEn
     }
 
     private static final ResourceLocation LOOT_TABLE = new ResourceLocation(PeculiarPrimordials.MOD_ID, "gameplay/frogfishing");
- private long lastSpawnTime = 0;
- //4800
- private final long spawnInterval = 4800;
 
- @Override
- public void customServerAiStep() {
-     this.prevGulpProgress = this.gulpProgress;
-     super.customServerAiStep();
-     if (isInWater()) {
-         long currentTime = level().getGameTime();
-         long timeSinceLastSpawn = currentTime - lastSpawnTime;
 
-         if (timeSinceLastSpawn >= spawnInterval) {
-             this.playSound(SoundEvents.FISHING_BOBBER_SPLASH, 1.0F, 1.0F);
-             spawnRandomItems();
-             lastSpawnTime = currentTime;
-         }
-     }
- }
+    @Override
+    protected boolean isImmobile() {
+        return super.isImmobile() || this.isGulping();
+    }
+
+    public int gulpNumber = 200;
+
+    public int gulpInterval = this.random.nextInt(gulpNumber) + gulpNumber;
+
+    @Override
+    public void aiStep() {
+        super.aiStep();
+        if (!this.level().isClientSide && this.isAlive() && --this.gulpInterval <= 0) {
+            setGulping(true);
+            spawnRandomItems();
+            this.gameEvent(GameEvent.ENTITY_PLACE);
+            this.gulpInterval = this.random.nextInt(gulpNumber) + gulpNumber;
+            playSound(SoundEvents.FISHING_BOBBER_SPLASH, 0.5F, 1.0F);
+        } else if (this.gulpInterval > 0) {
+            setGulping(false);
+        }
+    }
 
     private void spawnRandomItems() {
-        List<ItemStack> loot = getDigLoot(this);
+        List<ItemStack> loot = getFishingLoot(this);
             for (ItemStack itemStack : loot) {
                 spawnAtLocation(itemStack, 0.0F);
             }
     }
-    private static List<ItemStack> getDigLoot(NeilpeartiaEntity entity) {
+
+    private static List<ItemStack> getFishingLoot(NeilpeartiaEntity entity) {
         LootTable loottable = entity.level().getServer().getLootData().getLootTable(LOOT_TABLE);
         return loottable.getRandomItems((new LootParams.Builder((ServerLevel)entity.level())).withParameter(LootContextParams.THIS_ENTITY, entity).create(LootContextParamSets.PIGLIN_BARTER));
     }
 
-//  public void tick() {
-//      super.tick();
 
-
-//      if (this.getGulpingTime() <= 0 && this.getIsGulping()) {
-//          this.setIsGulping(false);
-//          this.goalSelector.getRunningGoals().forEach(WrappedGoal::start);
-//      }
-
-//      if (this.getIsGulping()) {
-//          this.setGulpingTime(this.getGulpingTime() - 1);
-//          this.getNavigation().stop();
-//          this.goalSelector.getRunningGoals().forEach(WrappedGoal::stop);
-//          if (this.gulpSoundTimer <= 0.0F) {
-//              this.gulpSoundTimer = 100.0F;
-//          }
-
-//          if (this.gulpSoundTimer >= 100.0F) {
-//              this.playSound(SoundEvents.FISHING_BOBBER_SPLASH, 1.0F, 1.0F);            }
-
-//          --this.gulpSoundTimer;
-//          if (this.random.nextInt(90) == 0) {
-//              spawnRandomItems();
-//          }
-//      }
-
-//  }
-
-
-
-    //sound code
     protected SoundEvent getAmbientSound() {
         return SoundEvents.TROPICAL_FISH_AMBIENT;
     }
@@ -297,52 +315,52 @@ public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEn
 
     //animations code
 
+    private static final EntityDataAccessor<Boolean> IS_GULPING = SynchedEntityData.defineId(NeilpeartiaEntity.class, EntityDataSerializers.BOOLEAN);
+
+
+
+
     static {
-        GULPING_TIME = SynchedEntityData.defineId(NeilpeartiaEntity.class, EntityDataSerializers.INT);
-        GULPING = SynchedEntityData.defineId(NeilpeartiaEntity.class, EntityDataSerializers.BOOLEAN);
-        LOGGER = LogManager.getLogger();
-        FROGFISH_GULP = RawAnimation.begin().thenPlay("animation.model.gulp");
-        FROGFISH_IDLE = RawAnimation.begin().thenLoop("animation.model.idle");
-        FROGFISH_WALK = RawAnimation.begin().thenLoop("animation.model.walk");
+     LOGGER = LogManager.getLogger();
+     FROGFISH_IDLE = RawAnimation.begin().thenLoop("animation.model.idle");
+     FROGFISH_WALK = RawAnimation.begin().thenLoop("animation.model.walk");
     }
-    protected <E extends NeilpeartiaEntity> PlayState gulpController(AnimationState<E> event) {
 
-     if (this.getIsGulping()) {
-            event.setAndContinue(FROGFISH_GULP);
-            return PlayState.CONTINUE;
-        } else {
-            event.getController().forceAnimationReset();
-            return PlayState.STOP;
-        }
-    }
     @Override
-    public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController[]{new AnimationController(this, "Normal", 5, this::Controller)});
-        controllers.add(new AnimationController[]{new AnimationController(this, "Gulp", 5, this::gulpController)});
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        controllerRegistrar.add(new AnimationController<GeoAnimatable>(this, "controller", 4, this::predicate));
     }
 
-    public double getTick(Object o) {
-        return (double)this.tickCount;
-    }
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
 
-    protected <E extends NeilpeartiaEntity> PlayState Controller(final software.bernie.geckolib.core.animation.AnimationState<E> event) {
-        if(this.isFromBook()){
+        if (this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6) {
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
-     if (this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6) {
-            {
-                event.getController().setAnimation(RawAnimation.begin().thenLoop("animation.model.walk"));
-                event.getController().setAnimationSpeed(1.5D);
-            }
-        } else {
-            event.getController().setAnimation(RawAnimation.begin().thenLoop("animation.model.idle"));
-            event.getController().setAnimationSpeed(1.0D);
+        if (this.isInWater() && !this.onGround()) {
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.swim", Animation.LoopType.LOOP));
+            return PlayState.CONTINUE;
         }
+        if (this.isGulping()) {
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.gulp", Animation.LoopType.PLAY_ONCE));
+            return PlayState.CONTINUE;
+        }
+        geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
+
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
     }
+
+    public boolean isGulping() {
+        return entityData.get(IS_GULPING);
+    }
+
+    public void setGulping(boolean gulping) {
+        entityData.set(IS_GULPING, gulping);
+    }
+
 }

@@ -37,6 +37,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> RAW_NEILPEARTIA = ITEMS.register("raw_neilpeartia", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(1).saturationMod(0.4F).meat().effect(new MobEffectInstance(MobEffects.CONFUSION, 140, 2), 1F).build())));
 
+    public static final RegistryObject<Item> CHARRED_STETHACANTHUS = ITEMS.register("charred_stetha", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationMod(0.1F).meat().fast().build())));
+
     public static final RegistryObject<Item> RAW_BLOCHIUS = ITEMS.register("raw_blochius", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(1).saturationMod(0.4F).meat().build())));
 
     public static final RegistryObject<Item> RAW_GIGANHINGA = ITEMS.register("raw_giganhinga", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(1).saturationMod(0.2F).meat().effect(new MobEffectInstance(MobEffects.HUNGER, 140, 1), 0.5F).build())));

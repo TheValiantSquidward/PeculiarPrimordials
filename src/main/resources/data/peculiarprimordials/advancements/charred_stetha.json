@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:main/fossil",
+  "criteria": {
+    "carbon_sludge": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "peculiarprimordials:charred_stetha"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "peculiarprimordials.advancement.obtain_charred_stetha.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "peculiarprimordials:charred_stetha"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "peculiarprimordials.advancement.obtain_charred_stetha"
+    }
+  },
+  "requirements": [
+    [
+      "carbon_sludge"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

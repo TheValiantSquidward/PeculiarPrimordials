@@ -11,6 +11,10 @@
         },
         {
           "type": "minecraft:item",
+          "name": "peculiarprimordials:lure_disc"
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:diamond"
         },
         {

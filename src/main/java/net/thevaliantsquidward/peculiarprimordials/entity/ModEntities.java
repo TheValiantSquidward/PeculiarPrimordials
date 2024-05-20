@@ -18,7 +18,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<NeilpeartiaEntity>> NEILPEARTIA =
             ENTITY_TYPES.register("neilpeartia",
                     () -> EntityType.Builder.of(NeilpeartiaEntity::new, MobCategory.WATER_CREATURE)
-                            .sized(2.3F, 1.95F)
+                            .sized(1.4F, 1.6F)
                             .build(new ResourceLocation(PeculiarPrimordials.MOD_ID, "neilpeartia").toString()));
 
     public static final RegistryObject<EntityType<ForeyiaEntity>> FOREYIA =

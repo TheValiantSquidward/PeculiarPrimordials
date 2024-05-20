@@ -31,10 +31,12 @@ public class NeilpeartiaRenderer extends GeoEntityRenderer<NeilpeartiaEntity> {
     }
 
     public ResourceLocation getTextureLocation(NeilpeartiaEntity entity) {
-        return switch (entity.getVariant()) {
-            case 1 -> TEXTURE_GOLDEN;
-            case 2 -> TEXTURE_KERMIT;
-            default -> TEXTURE_2FROGFISH;
-        };
+        if (entity.isKermit()) {
+            return TEXTURE_KERMIT;
+        }
+        switch (entity.getVariant()) {
+            case 1: return TEXTURE_GOLDEN;
+            default: return TEXTURE_2FROGFISH;
+        }
     }
 }

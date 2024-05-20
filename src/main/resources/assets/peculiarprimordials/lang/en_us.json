@@ -6,13 +6,12 @@
   "item.peculiarprimordials.tapejara_spawn_egg" : "Tapejara Spawn Egg",
   "item.peculiarprimordials.giganhinga_spawn_egg" : "Giganhinga Spawn Egg",
   "item.peculiarprimordials.foreyia_spawn_egg" : "Foreyia Spawn Egg",
-  "item.peculiarprimordials.domeykodactylus_spawn_egg" : "Domeykodactylus Spawn Egg",
-  "item.peculiarprimordials.harboroteuthis_spawn_egg" : "Harboroteuthis Spawn Egg",
 
   "item.peculiarprimordials.raw_neilpeartia" : "Raw Neilpeartia",
   "item.peculiarprimordials.raw_blochius" : "Raw Blochius",
   "item.peculiarprimordials.raw_giganhinga" : "Raw Giganhinga",
   "item.peculiarprimordials.roast_giganhinga" : "Roast Giganhinga",
+  "item.peculiarprimordials.charred_stetha" : "Charred Stethacanthus",
 
   "item.peculiarprimordials.blochius_bucket" : "Bucket Of Blochius",
   "item.peculiarprimordials.shed_lure" : "Shed Lure",
@@ -30,11 +29,11 @@
   "item.peculiarprimordials.lure_disc" : "Music Disc",
   "item.peculiarprimordials.lure_disc.desc" : "TheValiantSquidward - Allure",
 
-  "block.peculiarprimordials.neilpeartia_eggs" : "Neilpeartia Eggs",
-  "block.peculiarprimordials.blochius_eggs" : "Blochius Eggs",
-  "block.peculiarprimordials.giganhinga_eggs" : "Giganhinga Eggs",
-  "block.peculiarprimordials.tapejara_eggs" : "Tapejara Eggs",
-  "block.peculiarprimordials.foreyia_eggs" : "Foreyia Eggs",
+  "block.peculiarprimordials.neilpeartia_eggs" : "Neilpeartia Egg",
+  "block.peculiarprimordials.blochius_eggs" : "Blochius Egg",
+  "block.peculiarprimordials.giganhinga_eggs" : "Giganhinga Egg",
+  "block.peculiarprimordials.tapejara_eggs" : "Tapejara Egg",
+  "block.peculiarprimordials.foreyia_eggs" : "Foreyia Egg",
 
   "entity.peculiarprimordials.neilpeartia" : "Neilpeartia",
   "entity.peculiarprimordials.blochius" : "Blochius",
@@ -54,7 +53,12 @@
   "peculiarprimordials.advancement.interact_blochius" : "Needle (Fish) in a Haystack",
   "peculiarprimordials.advancement.interact_blochius.desc" : "Revive a Blochius",
 
-  "peculiarprimordials.advancement.interact_foreyia" : "All for one and one Foreyiall",
-  "peculiarprimordials.advancement.interact_foreyia.desc" : "Revive a Foreyia"
+  "peculiarprimordials.advancement.interact_foreyia" : "All for One and One Foreyiall",
+  "peculiarprimordials.advancement.interact_foreyia.desc" : "Revive a Foreyia",
 
+  "peculiarprimordials.advancement.obtain_charred_stetha" : "Blackened and Burnt",
+  "peculiarprimordials.advancement.obtain_charred_stetha.desc" : "Acquire a Charred Stethacanthus",
+
+  "peculiarprimordials.advancement.yinyang" : "The Yin and the Yang",
+  "peculiarprimordials.advancement.yinyang.desc" : "Obtain both a Charred Stethacanthus and a Golden Scaumenacia"
 }

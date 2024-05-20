@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:main/fossil",
+  "display": {
+    "icon": {
+      "item": "unusualprehistory:golden_scau"
+    },
+    "title": {
+      "translate": "peculiarprimordials.advancement.yinyang"
+    },
+    "description": {
+      "translate": "peculiarprimordials.advancement.yinyang.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 100
+  },
+  "criteria": {
+    "1": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [ { "items": ["peculiarprimordials:charred_stetha"] } ] } },
+    "2": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [ { "items": ["unusualprehistory:golden_scau"] } ] } }
+  },
+  "requirements": [
+    ["1"], ["2"]
+  ],
+  "sends_telemetry_event": true
+}

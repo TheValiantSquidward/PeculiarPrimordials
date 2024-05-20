@@ -66,15 +66,6 @@ public class ModBlocks {
             ),
             entry -> new BlockItem(entry.get(), new Item.Properties()));
 
-    public static final Supplier<Block> DOMEYKODACTYLUS = create("domeykodactylus_eggs",
-            () -> new BlockDinosaurLandEggs(
-                    BlockBehaviour.Properties.of().strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion(),
-                    ModEntities.DOMEYKODACTYLUS, 2,
-                    Block.box(4, 0, 8, 11, 9, 15),
-                    Block.box(2, 0, 1, 14, 10, 15)
-            ),
-            entry -> new BlockItem(entry.get(), new Item.Properties()));
-
     public static <B extends Block> RegistryObject<B> registerBlock(String name, Supplier<? extends B> supplier) {
         RegistryObject<B> block = BLOCKS.register(name, supplier);
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));

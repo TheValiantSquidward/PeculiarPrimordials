@@ -40,6 +40,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -69,10 +70,6 @@ import java.util.Objects;
 public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEntity, IHatchableEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private Level level;
-
-    public static final Logger LOGGER;
-    private static final RawAnimation FROGFISH_WALK;
-    private static final RawAnimation FROGFISH_IDLE;
 
 
     public NeilpeartiaEntity(EntityType<? extends EntityBaseDinosaurAnimal> pEntityType, Level pLevel) {
@@ -262,17 +259,31 @@ public boolean isFood(ItemStack stack) {
 
     @Override
     protected boolean isImmobile() {
-        return super.isImmobile() || this.isGulping();
+        return super.isImmobile() || this.isGulping() || this.isDancing();
     }
 
-    public int gulpNumber = 200;
+    public int gulpNumber = 300 * 20;
 
     public int gulpInterval = this.random.nextInt(gulpNumber) + gulpNumber;
+    private boolean dance;
+    public void setRecordPlayingNearby(BlockPos pPos, boolean dancing) {
+        this.jukebox = pPos;
+        this.dance = dancing;
+    }
+    public boolean isDancing() {
+        return this.dance;
+    }
 
     @Override
     public void aiStep() {
         super.aiStep();
-        if (!this.level().isClientSide && this.isAlive() && --this.gulpInterval <= 0) {
+        if (this.jukebox == null || !this.jukebox.closerToCenterThan(this.position(), 3.46D) || !this.level().getBlockState(this.jukebox).is(Blocks.JUKEBOX)) {
+            this.dance = false;
+            this.jukebox = null;
+        }
+
+        if (!this.level().isClientSide && this.isAlive() && --this.gulpInterval <= 0 && !dance && !passive &&
+        isInWater()) {
             setGulping(true);
             spawnRandomItems();
             this.gameEvent(GameEvent.ENTITY_PLACE);
@@ -320,16 +331,13 @@ public boolean isFood(ItemStack stack) {
 
 
 
-    static {
-     LOGGER = LogManager.getLogger();
-     FROGFISH_IDLE = RawAnimation.begin().thenLoop("animation.model.idle");
-     FROGFISH_WALK = RawAnimation.begin().thenLoop("animation.model.walk");
-    }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<GeoAnimatable>(this, "controller", 4, this::predicate));
     }
+
+
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
 
@@ -345,9 +353,16 @@ public boolean isFood(ItemStack stack) {
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.gulp", Animation.LoopType.PLAY_ONCE));
             return PlayState.CONTINUE;
         }
+        if (this.isDancing()) {
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.dance", Animation.LoopType.LOOP));
+            return PlayState.CONTINUE;
+        }
+
         geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
+
+    private BlockPos jukebox;
 
 
     @Override
@@ -362,5 +377,6 @@ public boolean isFood(ItemStack stack) {
     public void setGulping(boolean gulping) {
         entityData.set(IS_GULPING, gulping);
     }
+
 
 }

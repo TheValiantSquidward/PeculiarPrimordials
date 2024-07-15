@@ -7,10 +7,14 @@
   "item.peculiarprimordials.giganhinga_spawn_egg" : "Giganhinga Spawn Egg",
   "item.peculiarprimordials.foreyia_spawn_egg" : "Foreyia Spawn Egg",
 
+
   "item.peculiarprimordials.raw_neilpeartia" : "Raw Neilpeartia",
   "item.peculiarprimordials.raw_blochius" : "Raw Blochius",
+  "item.peculiarprimordials.raw_foreyia" : "Raw Foreyia",
+  "item.peculiarprimordials.cooked_blochius" : "Cooked Blochius",
   "item.peculiarprimordials.raw_giganhinga" : "Raw Giganhinga",
   "item.peculiarprimordials.roast_giganhinga" : "Roast Giganhinga",
+  "item.peculiarprimordials.anhinga_omelette" : "Giganhinga Omelette",
   "item.peculiarprimordials.charred_stetha" : "Charred Stethacanthus",
 
   "item.peculiarprimordials.blochius_bucket" : "Bucket Of Blochius",
@@ -25,6 +29,18 @@
   "item.peculiarprimordials.foreyia_flask" : "Foreyia DNA Flask",
 
   "item.peculiarprimordials.fish_leather" : "Fish Leather",
+
+  "item.peculiarprimordials.gilded_crest" : "Gilded Crest",
+  "item.peculiarprimordials.flamboyant_crest" : "Flamboyant Crest",
+  "item.peculiarprimordials.elegant_crest" : "Elegant Crest",
+
+  "item.peculiarprimordials.gilded_horn" : "Gilded Horn",
+  "item.peculiarprimordials.flamboyant_saxaphone" : "Flamboyant Saxophone",
+  "item.peculiarprimordials.elegant_flute" : "Elegant Flute",
+
+  "effect.peculiarprimordials.gilded_epiphany" : "Gilded Epiphany",
+  "effect.peculiarprimordials.flamboyant_rage" : "Flamboyant Rage",
+  "effect.peculiarprimordials.elegant_invigoration" : "Elegant Invigoration",
 
   "item.peculiarprimordials.lure_disc" : "Music Disc",
   "item.peculiarprimordials.lure_disc.desc" : "TheValiantSquidward - Allure",
@@ -60,5 +76,9 @@
   "peculiarprimordials.advancement.obtain_charred_stetha.desc" : "Acquire a Charred Stethacanthus",
 
   "peculiarprimordials.advancement.yinyang" : "The Yin and the Yang",
-  "peculiarprimordials.advancement.yinyang.desc" : "Obtain both a Charred Stethacanthus and a Golden Scaumenacia"
+  "peculiarprimordials.advancement.yinyang.desc" : "Obtain both a Charred Stethacanthus and a Golden Scaumenacia",
+
+  "peculiarprimordials.advancement.maestro" : "A True Maestro",
+  "peculiarprimordials.advancement.maestro.desc" : "Collect all 3 Mystical Instruments"
+
 }

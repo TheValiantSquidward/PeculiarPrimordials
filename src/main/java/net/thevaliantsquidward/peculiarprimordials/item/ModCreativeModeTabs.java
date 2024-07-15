@@ -23,9 +23,12 @@ public class ModCreativeModeTabs {
                         //order:
 
                         pOutput.accept(ModItems.RAW_BLOCHIUS.get());
+                        pOutput.accept(ModItems.COOKED_BLOCHIUS.get());
                         pOutput.accept(ModItems.RAW_NEILPEARTIA.get());
+                        pOutput.accept(ModItems.RAW_FOREYIA.get());
                         pOutput.accept(ModItems.RAW_GIGANHINGA.get());
                         pOutput.accept(ModItems.COOKED_GIGANHINGA.get());
+                        pOutput.accept(ModItems.ANHINGA_OMELETTE.get());
                         pOutput.accept(ModItems.CHARRED_STETHACANTHUS.get());
 
                         pOutput.accept(ModItems.BLOCHIUS_SPAWN_EGG.get());
@@ -34,8 +37,16 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.TAPEJARA_SPAWN_EGG.get());
                         pOutput.accept(ModItems.GIGANHINGA_SPAWN_EGG.get());
 
-                        pOutput.accept(ModItems.FISH_LEATHER.get());
+
                         pOutput.accept(ModItems.SHED_LURE.get());
+
+                        pOutput.accept(ModItems.GILDED_CREST.get());
+                        pOutput.accept(ModItems.FLAMBOYANT_CREST.get());
+                        pOutput.accept(ModItems.ELEGANT_CREST.get());
+
+                        pOutput.accept(ModItems.GILDED_HORN.get());
+                        pOutput.accept(ModItems.FLAMBOYANT_SAXAPHONE.get());
+                        pOutput.accept(ModItems.ELEGANT_FLUTE.get());
 
                         pOutput.accept(ModItems.BLOCHIUS_FLASK.get());
                         pOutput.accept(ModItems.FOREYIA_FLASK.get());

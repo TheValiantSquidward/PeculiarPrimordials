@@ -174,7 +174,20 @@ if (produceItem) {
 
           }
           return InteractionResult.SUCCESS;
-      } else {
+      } else if(itemstack.getItem() == ModItems.CHARRED_STETHACANTHUS.get()) {
+
+
+          if (!this.level().isClientSide) {
+              if (!player.isCreative()) {
+                  itemstack.shrink(1);
+              }
+              this.playSound(SoundEvents.GENERIC_EAT, 1.0F, 1.0F);
+
+              this.passive = false;
+
+          }
+          return InteractionResult.SUCCESS; }
+      else {
           return InteractionResult.PASS;
                 }
 

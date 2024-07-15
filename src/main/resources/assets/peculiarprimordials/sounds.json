@@ -6,5 +6,45 @@
         "stream": true
       }
     ]
+  },
+  "trumpet": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "peculiarprimordials:trumpet"
+      }
+    ]
+  },
+  "anhinga": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "peculiarprimordials:anhinga"
+      }
+    ]
+  },
+  "splat": {
+  "category": "neutral",
+  "sounds": [
+    {
+      "name": "peculiarprimordials:splat"
+    }
+  ]
+},
+  "saxophone": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "peculiarprimordials:flamboyant_toot"
+      }
+    ]
+  },
+  "flute": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "peculiarprimordials:elegant_toot"
+      }
+    ]
   }
-}
+ }

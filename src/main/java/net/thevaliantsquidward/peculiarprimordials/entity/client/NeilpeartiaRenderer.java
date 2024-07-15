@@ -16,6 +16,7 @@ public class NeilpeartiaRenderer extends GeoEntityRenderer<NeilpeartiaEntity> {
 
     public NeilpeartiaRenderer(EntityRendererProvider.Context renderManagerIn) {
         super(renderManagerIn, new NeilpeartiaModel());
+        this.addRenderLayer(new NeilpeartiaGlow(this));
     }
 
     protected void scale(NeilpeartiaEntity entitylivingbaseIn, PoseStack matrixStackIn, float partialTickTime) {

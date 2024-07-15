@@ -5,6 +5,7 @@ import com.peeko32213.unusualprehistory.common.entity.EntityMajungasaurus;
 import com.peeko32213.unusualprehistory.common.entity.EntityTyrannosaurusRex;
 import com.peeko32213.unusualprehistory.common.entity.IBookEntity;
 import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityBaseDinosaurAnimal;
+import com.peeko32213.unusualprehistory.core.registry.UPItems;
 import com.peeko32213.unusualprehistory.core.registry.UPSounds;
 import com.peeko32213.unusualprehistory.core.registry.UPTags;
 import net.minecraft.core.BlockPos;
@@ -14,6 +15,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -21,6 +23,8 @@ import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
@@ -32,6 +36,8 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -43,6 +49,8 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
 import net.thevaliantsquidward.peculiarprimordials.entity.msc.util.navigator.PPFlyingMoveController;
+import net.thevaliantsquidward.peculiarprimordials.item.ModItems;
+import net.thevaliantsquidward.peculiarprimordials.sound.ModSounds;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -238,6 +246,49 @@ public class TapejaraEntity extends EntityBaseDinosaurAnimal implements GeoEntit
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(NeilpeartiaEntity.class, EntityDataSerializers.INT);
 
 
+    public boolean cooldown = false;
+
+    public int cooldowntimer = 5 * 20 * 60;
+
+@Override
+public InteractionResult mobInteract(Player player, InteractionHand hand) {
+    ItemStack itemstack = player.getItemInHand(hand);
+    if (itemstack.getItem() == UPItems.BLUE_FRUIT.get() && !this.cooldown && !this.level().isClientSide) {
+    if (!player.isCreative())
+    {
+        itemstack.shrink(1);
+    }
+
+    this.cooldown = true;
+        this.heal(10.0F);
+        this.playSound(SoundEvents.GENERIC_EAT, 1.0F, 1.0F);
+
+    if(getVariant() == 1) {
+        this.spawnAtLocation(ModItems.FLAMBOYANT_CREST.get());
+        this.playSound(SoundEvents.ITEM_PICKUP, 1.0F, 1.0F);
+    } else if(getVariant() == 2) {
+        this.spawnAtLocation(ModItems.ELEGANT_CREST.get());
+        this.playSound(SoundEvents.ITEM_PICKUP, 1.0F, 1.0F);
+    } else {
+        this.spawnAtLocation(ModItems.GILDED_CREST.get());
+        this.playSound(SoundEvents.ITEM_PICKUP, 1.0F, 1.0F);
+    }
+        return InteractionResult.SUCCESS;
+    }
+    return InteractionResult.FAIL;
+}
+
+
+    @Override
+    public void aiStep() {
+    if(cooldown) {
+        this.cooldowntimer --;
+        }
+    if(cooldowntimer <= 0) {
+        this.cooldown = false;
+    }
+    super.aiStep();
+    }
 
     public int getVariant() {
         return this.entityData.get(VARIANT);
@@ -288,15 +339,15 @@ public class TapejaraEntity extends EntityBaseDinosaurAnimal implements GeoEntit
     }
 
     protected SoundEvent getAmbientSound() {
-        return (SoundEvent)UPSounds.ANURO_IDLE.get();
+        return (SoundEvent) ModSounds.FLAMBOYANT_TOOT.get();
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return (SoundEvent)UPSounds.ANURO_HURT.get();
+        return (SoundEvent)ModSounds.FLAMBOYANT_TOOT.get();
     }
 
     protected SoundEvent getDeathSound() {
-        return (SoundEvent)UPSounds.ANURO_DEATH.get();
+        return (SoundEvent)ModSounds.FLAMBOYANT_TOOT.get();
     }
 
     public void killed(ServerLevel world, LivingEntity entity) {

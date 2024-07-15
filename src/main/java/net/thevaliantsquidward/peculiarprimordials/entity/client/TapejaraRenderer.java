@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.BlochiusEntity;
+import net.thevaliantsquidward.peculiarprimordials.entity.custom.GiganhingaEntity;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.NeilpeartiaEntity;
 import net.thevaliantsquidward.peculiarprimordials.entity.custom.TapejaraEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -24,6 +25,9 @@ public class TapejaraRenderer extends GeoEntityRenderer<TapejaraEntity> {
     @Override
     public void render(TapejaraEntity entity, float entityYaw, float partialTick, PoseStack poseStack,
                        MultiBufferSource bufferSource, int packedLight) {
+        if(entity.isBaby()) {
+            poseStack.scale(0.4f, 0.4f, 0.4f);
+        }
 
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }

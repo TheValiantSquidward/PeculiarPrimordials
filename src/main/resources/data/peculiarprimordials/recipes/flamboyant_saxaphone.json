@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:bone"
+    },
+    "X": {
+      "item": "peculiarprimordials:flamboyant_crest"
+    },
+    "P": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    "  X",
+    "X# ",
+    "P# "
+  ],
+  "result": {
+    "item": "peculiarprimordials:flamboyant_saxaphone"
+  }
+}

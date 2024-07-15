@@ -43,6 +43,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -74,6 +75,8 @@ public class NeilpeartiaEntity extends EntityBaseDinosaurAnimal implements GeoEn
 
     public NeilpeartiaEntity(EntityType<? extends EntityBaseDinosaurAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+        this.setPathfindingMalus(BlockPathTypes.WATER_BORDER, 0.0F);
     }
 
 @Override
@@ -89,7 +92,7 @@ public boolean isFood(ItemStack stack) {
     //goal code
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(3, new BottomWalkGoal(this, 1.0D, 10, 50));
+        this.goalSelector.addGoal(3, new BottomWalkGoal(this, 1.5D, 100, 0));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
  }
@@ -257,10 +260,7 @@ public boolean isFood(ItemStack stack) {
     private static final ResourceLocation LOOT_TABLE = new ResourceLocation(PeculiarPrimordials.MOD_ID, "gameplay/frogfishing");
 
 
-    @Override
-    protected boolean isImmobile() {
-        return super.isImmobile() || this.isGulping() || this.isDancing();
-    }
+
 
     public int gulpNumber = 300 * 20;
 
@@ -329,7 +329,10 @@ public boolean isFood(ItemStack stack) {
     private static final EntityDataAccessor<Boolean> IS_GULPING = SynchedEntityData.defineId(NeilpeartiaEntity.class, EntityDataSerializers.BOOLEAN);
 
 
-
+    @Override
+    protected boolean isImmobile() {
+        return super.isImmobile() || !this.isInWater() || this.isDancing();
+    }
 
 
     @Override
@@ -340,25 +343,27 @@ public boolean isFood(ItemStack stack) {
 
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
-
-        if (this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6) {
+        if (this.isGulping()) {
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.gulp", Animation.LoopType.PLAY_ONCE));
+            return PlayState.CONTINUE;
+        }
+        if (this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.isInWater() && this.onGround()) {
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.walk", Animation.LoopType.LOOP));
+            return PlayState.CONTINUE;
+        }   if (this.getDeltaMovement().horizontalDistanceSqr() <= 1.0E-6 && this.isInWater() && this.onGround() && !this.isFromBook()) {
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.idle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
         if (this.isInWater() && !this.onGround()) {
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.swim", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
-        if (this.isGulping()) {
-            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.gulp", Animation.LoopType.PLAY_ONCE));
-            return PlayState.CONTINUE;
-        }
-        if (this.isDancing()) {
-            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.dance", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
+       // if (this.isDancing()) {
+       //     geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.dance", Animation.LoopType.LOOP));
+       //     return PlayState.CONTINUE;
+       // }
 
-        geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.idle", Animation.LoopType.LOOP));
+        geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.model.beached", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
 

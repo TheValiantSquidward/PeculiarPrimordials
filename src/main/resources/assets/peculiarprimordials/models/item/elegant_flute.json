@@ -1,0 +1,14 @@
+{
+  "parent" : "item/generated",
+  "textures" : {
+    "layer0" : "peculiarprimordials:item/elegant_flute"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "playing": 1
+      },
+      "model": "peculiarprimordials:item/elegant_flute_playing"
+    }
+  ]
+}

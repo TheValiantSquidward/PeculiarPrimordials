@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "peculiarprimordials:item/elegant_crest"
+  }
+}

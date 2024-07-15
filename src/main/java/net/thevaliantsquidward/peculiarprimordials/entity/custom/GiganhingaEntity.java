@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -17,6 +18,8 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -27,6 +30,9 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.thevaliantsquidward.peculiarprimordials.PeculiarPrimordials;
 import net.thevaliantsquidward.peculiarprimordials.entity.ModEntities;
+import net.thevaliantsquidward.peculiarprimordials.item.ModItems;
+import net.thevaliantsquidward.peculiarprimordials.sound.ModSounds;
+import net.thevaliantsquidward.peculiarprimordials.tag.ModTags;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -71,6 +77,11 @@ public class GiganhingaEntity extends EntityBaseDinosaurAnimal implements GeoEnt
         }
     }
 
+    public boolean isInvulnerableTo(DamageSource source) {
+        return source.is(DamageTypes.IN_WALL) || super.isInvulnerableTo(source);
+    }
+
+
     private static final ResourceLocation LOOT_TABLE = new ResourceLocation(PeculiarPrimordials.MOD_ID, "gameplay/anhingaegglay");
     private Level level;
     private static List<ItemStack> getDigLoot(GiganhingaEntity entity) {
@@ -91,16 +102,23 @@ public class GiganhingaEntity extends EntityBaseDinosaurAnimal implements GeoEnt
                 .add(Attributes.MOVEMENT_SPEED, 0.1D)
                 .build();
     }
-
+    public static final Ingredient TEMPTATION_ITEM = Ingredient.of(ModItems.RAW_BLOCHIUS.get());
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 3.0D));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, TEMPTATION_ITEM, false));
+        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
+        this.goalSelector.addGoal(0, new PanicGoal(this, 3.0D));
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.targetSelector.addGoal(8, (new HurtByTargetGoal(this)));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
  }
+    @Override
+    public boolean isFood(ItemStack stack) {
+        return stack.is(ModTags.NEIL_FOOD);
+    }
 
     @Override
     protected SoundEvent getAttackSound() {
@@ -148,14 +166,15 @@ public class GiganhingaEntity extends EntityBaseDinosaurAnimal implements GeoEnt
     }
 
 
-
-
+    protected SoundEvent getIdleSound(DamageSource p_28281_) {
+        return ModSounds.ANHINGA.get();
+    }
     protected SoundEvent getDeathSound() {
-        return SoundEvents.CHICKEN_DEATH;
+        return ModSounds.ANHINGA.get();
     }
 
     protected SoundEvent getHurtSound(DamageSource p_28281_) {
-        return SoundEvents.CHICKEN_HURT;
+        return ModSounds.ANHINGA.get();
     }
 
     @Override

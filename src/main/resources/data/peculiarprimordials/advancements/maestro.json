@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:main/fossil",
+  "display": {
+    "icon": {
+      "item": "peculiarprimordials:gilded_horn"
+    },
+    "title": {
+      "translate": "peculiarprimordials.advancement.maestro"
+    },
+    "description": {
+      "translate": "peculiarprimordials.advancement.maestro.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 100
+  },
+  "criteria": {
+    "1": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [ { "items": ["peculiarprimordials:gilded_horn"] } ] } },
+    "2": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [ { "items": ["peculiarprimordials:elegant_flute"] } ] } },
+    "3": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [ { "items": ["peculiarprimordials:flamboyant_saxaphone"] } ] } }
+  },
+  "requirements": [
+    ["1"], ["2"], ["3"]
+  ],
+  "sends_telemetry_event": true
+}

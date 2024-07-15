@@ -2,6 +2,7 @@ package net.thevaliantsquidward.peculiarprimordials;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -68,6 +69,7 @@ public class PeculiarPrimordials
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+
             EntityRenderers.register
                     (ModEntities.NEILPEARTIA.get(), NeilpeartiaRenderer:: new);
             EntityRenderers.register
@@ -78,6 +80,10 @@ public class PeculiarPrimordials
                     (ModEntities.GIGANHINGA.get(), GiganhingaRenderer:: new);
             EntityRenderers.register
                     (ModEntities.FOREYIA.get(), ForeyiaRenderer:: new);
+            EntityRenderers.register
+                    (ModEntities.INFERTILE_EGG.get(), ThrownItemRenderer::new);
+            EntityRenderers.register
+                    (ModEntities.GOLDEN_EGG.get(), ThrownItemRenderer::new);
         }
     }
 }

@@ -16,6 +16,13 @@ public class ModSounds {
 
 
     public static final RegistryObject<SoundEvent> LURE = registerSoundEvents("frogsong");
+    public static final RegistryObject<SoundEvent> GILDED_TOOT = registerSoundEvents("trumpet");
+    public static final RegistryObject<SoundEvent> FLAMBOYANT_TOOT = registerSoundEvents("saxophone");
+    public static final RegistryObject<SoundEvent> ELEGANT_TOOT = registerSoundEvents("flute");
+    public static final RegistryObject<SoundEvent> SPLAT = registerSoundEvents("splat");
+
+    public static final RegistryObject<SoundEvent> ANHINGA = registerSoundEvents("anhinga");
+
 
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(PeculiarPrimordials.MOD_ID, name)));

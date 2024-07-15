@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "peculiarprimordials:elegant_crest"
+    },
+    "X": {
+      "item": "unusualprehistory:zuloagae"
+    }
+  },
+  "pattern": [
+    "X",
+    "X",
+    "#"
+  ],
+  "result": {
+    "item": "peculiarprimordials:elegant_flute"
+  },
+  "show_notification": true
+}

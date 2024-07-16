@@ -66,6 +66,10 @@ public class ModBlocks {
             ),
             entry -> new BlockItem(entry.get(), new Item.Properties()));
 
+    public static final RegistryObject<Block> STURDY_SHINGLES = registerBlock("sturdy_shingles",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.TUFF).strength(3.0F, 4.0F).requiresCorrectToolForDrops()));
+
+
     public static <B extends Block> RegistryObject<B> registerBlock(String name, Supplier<? extends B> supplier) {
         RegistryObject<B> block = BLOCKS.register(name, supplier);
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));

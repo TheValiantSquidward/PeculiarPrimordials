@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "peculiarprimordials:sturdy_shingles"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "peculiarprimordials:sturdy_scute"
+  }
+}

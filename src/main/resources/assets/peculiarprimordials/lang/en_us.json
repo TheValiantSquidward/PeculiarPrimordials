@@ -34,6 +34,10 @@
   "item.peculiarprimordials.flamboyant_crest" : "Flamboyant Crest",
   "item.peculiarprimordials.elegant_crest" : "Elegant Crest",
 
+  "item.peculiarprimordials.sturdy_scute" : "Sturdy Scute",
+  "item.peculiarprimordials.claw_shed" : "Claw Molt",
+  "item.peculiarprimordials.flask_of_whale_oil" : "Flask of Whale Oil",
+
   "item.peculiarprimordials.gilded_horn" : "Gilded Horn",
   "item.peculiarprimordials.flamboyant_saxaphone" : "Flamboyant Saxophone",
   "item.peculiarprimordials.elegant_flute" : "Elegant Flute",
@@ -45,11 +49,15 @@
   "item.peculiarprimordials.lure_disc" : "Music Disc",
   "item.peculiarprimordials.lure_disc.desc" : "TheValiantSquidward - Allure",
 
+  "item.peculiarprimordials.whaler_pistol" : "Whaler's Flintlock",
+
   "block.peculiarprimordials.neilpeartia_eggs" : "Neilpeartia Egg",
   "block.peculiarprimordials.blochius_eggs" : "Blochius Egg",
   "block.peculiarprimordials.giganhinga_eggs" : "Giganhinga Egg",
   "block.peculiarprimordials.tapejara_eggs" : "Tapejara Egg",
   "block.peculiarprimordials.foreyia_eggs" : "Foreyia Egg",
+
+  "block.peculiarprimordials.sturdy_shingles" : "Sturdy Shingles",
 
   "entity.peculiarprimordials.neilpeartia" : "Neilpeartia",
   "entity.peculiarprimordials.blochius" : "Blochius",

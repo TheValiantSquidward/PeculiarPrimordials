@@ -81,6 +81,13 @@ public class ModItems {
 
     public static final RegistryObject<Item> ELEGANT_FLUTE = ITEMS.register("elegant_flute", () -> new ElegantFluteItem(new Item.Properties().rarity(Rarity.RARE).durability(3)));
 
+    //public static final RegistryObject<Item> WHALER_PISTOL = ITEMS.register("whaler_pistol", () -> new WhalerPistolItem(new Item.Properties()));
+    public static final RegistryObject<Item> STURDY_SCUTE = ITEMS.register("sturdy_scute", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CLAW_SHED = ITEMS.register("claw_shed", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLASK_OF_WHALE_OIL = ITEMS.register("flask_of_whale_oil", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAPTORIAL_CHAINHOOK = ITEMS.register("raptorial_chainhook", () -> new RaptorialChainhookItem(new Item.Properties()));
+
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

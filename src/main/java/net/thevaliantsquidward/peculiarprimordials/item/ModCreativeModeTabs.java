@@ -43,10 +43,9 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.GILDED_CREST.get());
                         pOutput.accept(ModItems.FLAMBOYANT_CREST.get());
                         pOutput.accept(ModItems.ELEGANT_CREST.get());
-
-                        pOutput.accept(ModItems.GILDED_HORN.get());
-                        pOutput.accept(ModItems.FLAMBOYANT_SAXAPHONE.get());
-                        pOutput.accept(ModItems.ELEGANT_FLUTE.get());
+                        pOutput.accept(ModItems.STURDY_SCUTE.get());
+                        pOutput.accept(ModItems.CLAW_SHED.get());
+                        pOutput.accept(ModItems.FLASK_OF_WHALE_OIL.get());
 
                         pOutput.accept(ModItems.BLOCHIUS_FLASK.get());
                         pOutput.accept(ModItems.FOREYIA_FLASK.get());
@@ -60,12 +59,17 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.GIGANHINGA_EGG.get());
                         pOutput.accept(ModBlocks.TAPEJARA_EGG.get());
 
+                        pOutput.accept(ModBlocks.STURDY_SHINGLES.get());
+
                         pOutput.accept(ModItems.BLOCHIUS_BUCKET.get());
+
+                        pOutput.accept(ModItems.GILDED_HORN.get());
+                        pOutput.accept(ModItems.FLAMBOYANT_SAXAPHONE.get());
+                        pOutput.accept(ModItems.ELEGANT_FLUTE.get());
                         pOutput.accept(ModItems.LURE_DISC.get());
                         pOutput.accept(ModItems.GOLDEN_EGG.get());
                         pOutput.accept(ModItems.INFERTILE_EGG.get());
-
-
+                        //pOutput.accept(ModItems.WHALER_PISTOL.get());
                     })
                     .build());
 

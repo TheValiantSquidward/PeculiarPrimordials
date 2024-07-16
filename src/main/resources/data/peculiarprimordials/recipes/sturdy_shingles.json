@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "peculiarprimordials:sturdy_scute"
+    },
+    {
+      "item": "peculiarprimordials:sturdy_scute"
+    },
+    {
+      "item": "peculiarprimordials:sturdy_scute"
+    },
+    {
+      "item": "peculiarprimordials:sturdy_scute"
+    },
+    {
+      "item": "peculiarprimordials:sturdy_scute"
+    },
+    {
+      "item": "peculiarprimordials:sturdy_scute"
+    },
+    {
+      "item": "peculiarprimordials:sturdy_scute"
+    },
+    {
+      "item": "peculiarprimordials:sturdy_scute"
+    },
+    {
+      "item": "peculiarprimordials:sturdy_scute"
+    }
+  ],
+  "result": {
+    "item": "peculiarprimordials:sturdy_shingles"
+  }
+}

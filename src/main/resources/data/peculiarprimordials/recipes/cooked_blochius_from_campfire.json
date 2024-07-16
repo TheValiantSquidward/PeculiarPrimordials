@@ -5,7 +5,7 @@
   "experience": 1.0,
   "group": "cooked_blochius",
   "ingredient": {
-    "item": "unusualprehistory:raw_blochius"
+    "item": "peculiarprimordials:raw_blochius"
   },
   "result": "peculiarprimordials:cooked_blochius"
 }

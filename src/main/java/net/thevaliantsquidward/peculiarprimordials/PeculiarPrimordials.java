@@ -3,6 +3,7 @@ package net.thevaliantsquidward.peculiarprimordials;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -19,6 +20,7 @@ import net.thevaliantsquidward.peculiarprimordials.entity.client.*;
 import net.thevaliantsquidward.peculiarprimordials.item.ModCreativeModeTabs;
 import net.thevaliantsquidward.peculiarprimordials.item.ModItems;
 import net.thevaliantsquidward.peculiarprimordials.sound.ModSounds;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 
@@ -85,5 +87,8 @@ public class PeculiarPrimordials
             EntityRenderers.register
                     (ModEntities.GOLDEN_EGG.get(), ThrownItemRenderer::new);
         }
+    }
+    public static ResourceLocation id(@NotNull String path) {
+        return new ResourceLocation(PeculiarPrimordials.MOD_ID, path);
     }
 }
